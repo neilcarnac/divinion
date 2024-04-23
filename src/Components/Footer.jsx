@@ -7,7 +7,7 @@ function Footer() {
     <>
 
 
-      <footer className="bg-green-200 w-full absolute bottom-0">
+      <footer className="bg-[#6FC0D3] w-full absolute bottom-0">
         <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
           <div className="md:flex md:justify-between">
             <div className="mb-6 md:mb-0">

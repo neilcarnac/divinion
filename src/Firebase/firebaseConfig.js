@@ -8,7 +8,7 @@ import { getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  // apiKey: process.env.REACT_APP_FIREBASE_KEY,
+  // apiKey: process.env.local.REACT_APP_FIREBASE_KEY,
   apiKey: "AIzaSyDxZDItqR75XkxUCe3XfxZ023P1r7OikIA",
   authDomain: "divinion.firebaseapp.com",
   projectId: "divinion",
