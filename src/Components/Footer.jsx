@@ -1,4 +1,5 @@
-import { Button } from '@mui/base'
+import { Button } from "@material-tailwind/react";
+import { Input } from '@mui/material'
 import React from 'react'
 
 function Footer() {
@@ -6,19 +7,17 @@ function Footer() {
     <>
 
 
-      <footer className="bg-white dark:bg-gray-900 w-full absolute bottom-0">
+      <footer className="bg-green-200 w-full absolute bottom-0">
         <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
           <div className="md:flex md:justify-between">
             <div className="mb-6 md:mb-0">
               <div className='flex flex-col gap-4 '>
-                <div className='flex flex-row items-center gap-2'>
+                <div className='flex flex-col items-start gap-3 '>
 
-                  <h2 className='text-xl text-black'>
-                    Enter Email
-                  </h2>
-                  <input type="email" className='p-2 outline-none border border-1 rounded-lg ' />
+                  <Input variant="outlined" placeholder='Enter Email' label='Email' />
+                  <Button className='bg-black text-white p-4 font-normal w-full rounded-lg lowercase'>Subscribe</Button>
+
                 </div>
-                  <Button className='bg-black text-white p-4 rounded-lg'>Subscribe</Button>
               </div>
             </div>
             <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">

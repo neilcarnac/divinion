@@ -4,7 +4,7 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth, db } from '../Firebase/firebaseConfig'
 import { useNavigate } from 'react-router-dom';
 
-const Login = () => {
+const AdminLogin = () => {
 
   const [error, setError] = useState(false);
   const [email, setEmail] = useState('');
@@ -79,4 +79,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default AdminLogin
