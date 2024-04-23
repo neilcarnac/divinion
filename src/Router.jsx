@@ -10,7 +10,7 @@ import AdminLogin from './Pages/AdminLogin';
 const AppRouter = () => {
     return (
         <Routes>
-            <Route path="/" element={<HomePage />} />        
+            <Route path="/HomePage" element={<HomePage />} />        
             <Route path="/admin" element={<Admin />} />
             <Route path="/login" element={<Login />} />
             <Route path="/blog" element={<News />} />
