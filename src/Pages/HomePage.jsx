@@ -1,11 +1,15 @@
 import React from 'react'
 import Dashboard from '../Components/dashboard/Dashboard'
+import BannerOne from '../Components/BannerOne'
+import BannerTwo from '../Components/BannerTwo'
 
 const HomePage = () => {
   return (
-      <div className='flex flex-col'>
-        <Dashboard />
-      </div>
+    <>
+      <BannerOne />
+      <BannerTwo />
+      {/* <Dashboard /> */}
+    </>
   )
 }
 
