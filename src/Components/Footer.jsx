@@ -1,13 +1,14 @@
 import { Button } from "@material-tailwind/react";
 import { Input } from '@mui/material'
 import React from 'react'
+import { Link } from "react-router-dom";
 
 function Footer() {
   return (
     <>
 
 
-      <footer className="bg-[#6FC0D3] w-full absolute bottom-0">
+      <footer className=" w-full bottom-0">
         <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
           <div className="md:flex md:justify-between">
             <div className="mb-6 md:mb-0">
@@ -15,8 +16,13 @@ function Footer() {
                 <div className='flex flex-col items-start gap-3 '>
 
                   <Input variant="outlined" placeholder='Enter Email' label='Email' />
-                  <Button className='bg-black text-white p-4 font-normal w-full rounded-lg lowercase'>Subscribe</Button>
 
+
+<a href="/subscribe">
+<button className='bg-black hover:bg-white hover:cursor-pointer hover:text-black rounded-lg transition-colors duration-[1000ms] text-white p-4 w-full'>
+
+Subscribe</button>
+  </a>                    
                 </div>
               </div>
             </div>
