@@ -13,16 +13,17 @@ function Footer() {
           <div className="md:flex md:justify-between">
             <div className="mb-6 md:mb-0">
               <div className='flex flex-col gap-4 '>
+                <img src="logo.svg" alt="" />
                 <div className='flex flex-col items-start gap-3 '>
 
                   <Input variant="outlined" placeholder='Enter Email' label='Email' />
 
 
-<a href="/subscribe">
-<button className='bg-black hover:bg-white hover:cursor-pointer hover:text-black rounded-lg transition-colors duration-[1000ms] text-white p-4 w-full'>
+                  <a href="/subscribe">
+                    <button className='bg-black hover:bg-white hover:cursor-pointer hover:text-black rounded-lg transition-colors duration-[1000ms] text-white p-4 w-full'>
 
-Subscribe</button>
-  </a>                    
+                      Subscribe</button>
+                  </a>
                 </div>
               </div>
             </div>

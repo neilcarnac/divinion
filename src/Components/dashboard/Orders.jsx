@@ -55,7 +55,7 @@ function preventDefault(event) {
 const Orders = () => {
   return (
     <>
-      <Title>Recent Orders</Title>
+      <Title>Recent Users</Title>
       <Table size="small">
         <TableHead>
           <TableRow>
