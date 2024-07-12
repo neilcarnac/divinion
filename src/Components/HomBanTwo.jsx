@@ -6,7 +6,7 @@ const HomBanTwo = () => {
             <div className="bg-white flex w-full ">
                 <div className="flex font-joe flex-col items-center justify-center mx-auto mt-28 gap-2 lg:gap-6">
                     <p className='font-bold text-xl lg:text-5xl'>Recent News Topics</p>
-                    <div className="flex flex-col items-center text-base sm:text-xs text-[#999999]">
+                    <div className="flex flex-col items-center lg:text-xl lg:leading-tight sm:text-xs text-[#999999]">
                         <p>Explore pre-vetted investment opportunities available in a growing</p>
                         <p>number of industry categories.</p>
                     </div>
@@ -49,9 +49,9 @@ const HomBanTwo = () => {
                             </div>
 
                             <div className="lg:w-1/3 w-full h-auto shadow-lg flex flex-col">
-                                <div className="flex font-sans  flex-col gap-6  p-4">
+                                <div className="flex font-sans  flex-col gap-6">
                                     <img src="lne.png" alt="" />
-                                    <div className="flex flex-col">
+                                    <div className="flex flex-col pl-4 pr-4 pb-4">
 
                                         <p className='font-semibold leading-tight text-sm'>Leadership and Expertise:                                        </p>
                                         <p>Founded by Ms. Shreemoyee Mukhopadhyay, a qualified CFA with a rich background in capital markets, Divinion Advisory Services Pvt Ltd (DASL) is anchored by strong leadership. Ms. Mukhopadhyay's experience extends to teaching international finance at HR College, and she is currently pursuing an MBA at Wharton Business School, adding a global perspective to the firm's vision.
@@ -66,9 +66,9 @@ const HomBanTwo = () => {
 
                         <div className="flex flex-col lg:flex-row justify-between gap-4 lg:gap-12">
                             <div className="lg:w-1/3 w-full h-auto shadow-lg flex flex-col">
-                                <img src="hoem.png" alt="" />
-                                <div className="flex font-sans  flex-col gap-4 p-4">
-                                    <div className="flex flex-col">
+                                <div className="flex font-sans  flex-col gap-4">
+                                    <img src="hoem.png" alt="" />
+                                    <div className="flex flex-col  pl-4 pr-4 pb-4">
                                         <p className='font-semibold leading-tight text-sm'>Strategic Team Formation:
                                         </p>
                                         <p>We stand as true partners in your financial journey. Beyond investing your capital, we align our interests with yours by investing our own funds. This shared commitment ensures that our success is intertwined with yours.
@@ -77,9 +77,9 @@ const HomBanTwo = () => {
                                 </div>
                             </div>
                             <div className="lg:w-1/3 w-full h-auto shadow-lg flex flex-col">
-                                <div className="flex font-sans  flex-col gap-4 lg:gap-10 p-4">
+                                <div className="flex font-sans  flex-col gap-4 lg:gap-10 ">
                                     <img src="csr.webp" className='h-1/2 p-2' alt="" />
-                                    <div className="flex flex-col">
+                                    <div className="flex flex-col pl-4 pr-4 pb-4">
 
                                         <p className='font-semibold leading-tight text-sm'>Investment Approach:
                                         </p>
@@ -92,9 +92,9 @@ const HomBanTwo = () => {
                             </div>
 
                             <div className="lg:w-1/3 w-full h-auto shadow-lg flex flex-col">
-                                <div className="flex font-sans  flex-col gap-6  p-4">
+                                <div className="flex font-sans  flex-col gap-6 ">
                                     <img src="lne.png" alt="" />
-                                    <div className="flex flex-col">
+                                    <div className="flex flex-col  pl-4 pr-4 pb-4">
 
                                         <p className='font-semibold leading-tight text-sm'>Performance Consistency in All Market Conditions:
                                         </p>

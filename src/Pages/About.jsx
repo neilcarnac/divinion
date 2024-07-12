@@ -1,19 +1,12 @@
 import React from 'react'
-import AnimatedCard from '../Components/animatedCard/AnimatedCard'
-
+// import AnimatedCard from '../Components/animatedCard/AnimatedCard'
+import AboutBanOne from '../Components/AboutBanOne'
+import AboutBanTwo from '../Components/AboutBanTwo'
 const About = () => {
   return (
     <>
-      <div className='wrapper h-screen dark:bg-gray-900'>
-
-
-        <div className=''>
-          About
-        </div>
-        <div className=''>
-          <AnimatedCard />
-        </div>
-      </div>
+      <AboutBanOne />
+      <AboutBanTwo />
     </>
   )
 }
