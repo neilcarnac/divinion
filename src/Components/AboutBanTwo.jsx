@@ -9,29 +9,27 @@ const AboutBanTwo = () => {
                     <img src="MainAfter.webp" className='lg:w-[600px] rounded-xl w-full pt-8 pr-8' alt="" />
                     <div className="flex flex-col my-auto  items-start gap-4">
                         <p className='text-[#999999]'>01</p>
-                        <p className='text-2xl'>Create Bands</p>
-                        <p className='w-4/5 text-gray-950 font-thin leading-tight'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eaque vero ex, optio dolor voluptates a maxime.</p>
+                        <p className='text-2xl'>Corporate Social Responsibility at Divinion:
+                        </p>
+                        <p className='w-4/5 text-gray-950 font-thin leading-tight'>At Divinion, we believe in making a positive impact beyond financial markets. Committed to social responsibility, we allocate 25% of our profits towards Corporate Social Responsibility (CSR) activities. This dedicated initiative reflects our ethos of contributing to the well-being of the communities we operate in. Through our CSR endeavors, we aim to create lasting value and contribute meaningfully to societal progress.
+                        </p>
                         <p className='font-normal underline'>Explore Services {"-->"}</p>
                     </div>
                 </div>
-                <div className="flex flex-col lg:flex-row-reverse lg:justify-between gap-10 lg:gap-16">
+                <div className="flex flex-col lg:flex-row-reverse lg:justify-between w-full ">
                     <img src="MainAfter.webp" className='lg:w-[600px] rounded-xl w-full pt-8 pr-8' alt="" />
                     <div className="flex flex-col my-auto  items-start gap-4">
                         <p className='text-[#999999]'>02</p>
-                        <p className='text-2xl'>Create Bands</p>
-                        <p className='w-4/5 text-gray-950 font-thin leading-tight'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eaque vero ex, optio dolor voluptates a maxime.</p>
+                        <p className='text-2xl'>Customer Login</p>
+                        <a href="/blog" className='w-4/5'>
+                            <p className='text-gray-950 font-thin leading-tight underline'>1{")"} News Letter </p>
+                        </a>
+                        <p className='w-4/5 text-gray-950 font-thin leading-tight underline'>2{")"} SOA </p>
+
                         <p className='font-normal underline'>Explore Services {"-->"}</p>
                     </div>
                 </div>
-                <div className="flex flex-col lg:flex-row lg:justify-between gap-10 lg:gap-16">
-                    <img src="MainAfter.webp" className='lg:w-[600px] rounded-xl w-full pt-8 pr-8' alt="" />
-                    <div className="flex flex-col my-auto  items-start gap-4">
-                        <p className='text-[#999999]'>01</p>
-                        <p className='text-2xl'>Create Bands</p>
-                        <p className='w-4/5 text-gray-950 font-thin leading-tight'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eaque vero ex, optio dolor voluptates a maxime.</p>
-                        <p className='font-normal underline'>Explore Services {"-->"}</p>
-                    </div>
-                </div>
+
             </div>
         </>
     )

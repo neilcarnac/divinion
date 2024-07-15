@@ -1,10 +1,14 @@
 import React from 'react'
+import NewsBanOne from '../Components/NewsBanOne'
+import NewsBanTwo from '../Components/NewsBanTwo'
 
 const News = () => {
   return (
-    <div>
-      
-    </div>
+    <>
+      <NewsBanOne />
+      <NewsBanTwo />
+
+    </>
   )
 }
 
