@@ -3,7 +3,7 @@ import React from 'react'
 const NewsBanTwo = () => {
     return (
         <>
-            <div className="flex flex-col h-[100vh] bg-white w-full">
+            <div className="flex flex-col mb-72 h-[100vh] bg-white w-full">
                 <div className="flex flex-col text-xs gap-10 justify-between p-20 sm:p-10">
                     <div className="flex flex-col lg:flex-row justify-between gap-4 lg:gap-12">
                         <div className="lg:w-1/3 w-full h-auto shadow-lg flex flex-col">

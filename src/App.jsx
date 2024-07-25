@@ -10,11 +10,11 @@ function App() {
 
   return (
     <>
-    <Navbar />
+      {/* <Navbar /> */}
       <BrowserRouter>
         <AppRouter />
       </BrowserRouter>
-    <Footer />
+      {/* <Footer /> */}
     </>
   )
 }

@@ -2,9 +2,11 @@ import React from 'react'
 
 const Contact = () => {
   return (
-   <>
-   <p>Contact</p>
-   </>
+    <>
+      <div className='flex items-center p-20 flex-col mx-auto my-auto'>
+        <p className='text-5xl font-joe'>Contact</p>
+      </div>
+    </>
   )
 }
 

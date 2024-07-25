@@ -18,7 +18,6 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import { MainListItems, SecondaryListItems } from './ListItem';
-import Chart from './Charts';
 import Deposits from './Deposits';
 import Orders from './Orders';
 
@@ -148,7 +147,7 @@ const Dashboard = () => {
           <List component="nav">
             <MainListItems />
             <Divider sx={{ my: 1 }} />
-            <SecondaryListItems />
+            {/* <SecondaryListItems /> */}
           </List>
         </Drawer>
         <Box
@@ -175,7 +174,6 @@ const Dashboard = () => {
                     height: 240,
                   }}
                 >
-                  <Chart />
                 </Paper>
               </Grid>
               <Grid item xs={12} md={4} lg={3}>

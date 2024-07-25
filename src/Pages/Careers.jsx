@@ -1,9 +1,9 @@
 import React from 'react'
-
+import Dashboard from '../Components/dashboard/Dashboard'
 function Careers() {
   return (
     <>
-    <p>Careers</p>
+      <Dashboard />
     </>
   )
 }

@@ -7,7 +7,6 @@ const News = () => {
     <>
       <NewsBanOne />
       <NewsBanTwo />
-
     </>
   )
 }
