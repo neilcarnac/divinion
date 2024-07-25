@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Routes } from 'react-router';
-
+import { UserProvider, UserContext } from './Context/UserContext'; // Adjust the path as necessary
+import { useContext } from 'react';
 import HomePage from './Pages/HomePage';
 import Admin from './Pages/Admin';
 import Login from './Pages/Login';
@@ -12,20 +13,27 @@ import Careers from './Pages/Careers';
 import Contact from './Pages/Contact';
 
 const AppRouter = () => {
+    const { currentUser } = useContext(UserContext); // Access current user from context
+
     return (
-        <Routes>
-            <Route path="/" element={<HomePage />} />        
-            <Route path="/about" element={<About />} />        
-            <Route path="/admin" element={<Admin />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/blog" element={<News />} />
-            <Route path="/subscribe" element={<Subscribe />} />
-            <Route path="/careers" element={<Careers />} />
-            <Route path="/contact" element={<Contact />} />
+
+        <UserProvider>
+
+            <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/about/" element={<About />} />
+                <Route path="/admin/" element={<Admin />} />
+                <Route path="/login/" element={<Login />} />
+                <Route path="/blog/" element={<News />} />
+                <Route path="/subscribe/" element={<Subscribe />} />
+                {/* <Route path="/careers/" element={<Careers />} /> */}
+                <Route path="/contact/" element={<Contact />} />
 
 
-            <Route path="/adminLogin" element={<AdminLogin />} />
-        </Routes>
+                <Route path="/adminLogin" element={<AdminLogin />} />
+            </Routes>
+        </UserProvider>
+
     );
 };
 

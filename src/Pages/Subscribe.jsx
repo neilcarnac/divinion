@@ -1,9 +1,13 @@
 import React from 'react'
-
+import Navbar from '../Components/Navbar'
+import Footer from '../Components/Footer'
 const Subscribe = () => {
   return (
     <>
-    <p>subscribe</p>
+      <Navbar />
+      <p>subscribe</p>
+      <Footer />
+
     </>
   )
 }

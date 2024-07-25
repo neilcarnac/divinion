@@ -1,8 +1,39 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
+import { db } from './Firebase/firebaseConfig'; // Adjust the path as necessary
+import { doc, getDoc } from 'firebase/firestore';
 
 const HomBanTwo = () => {
+    const [currentAUM, setCurrentAUM] = useState(null);
+    const [amount, setAmount] = useState(null);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        const fetchAUM = async () => {
+            try {
+                // Reference to the document
+                const docRef = doc(db, 'aum', 'currentAUM');
+                const docSnap = await getDoc(docRef);
+
+                if (docSnap.exists()) {
+                    setAmount(docSnap.data().amount); // Access the amount field
+                } else {
+                    setError('No such document!');
+                }
+            } catch (error) {
+                setError(error.message);
+            }
+        };
+
+        fetchAUM();
+    }, []);
     return (
         <>
+            <div className="mx-auto mt-16 flex flex-col items-start lg:p-8 p-4 bg-black/90 text-white sm:gap-2 rounded-xl lg:w-1/4 w-1/2">
+                <p className="font-bold sm:leading-none lg:text-2xl text-xl">Current AUM Amount:</p>
+                <p className="lg:text-xl text-sm">${amount}</p>
+
+            </div>
+
             <div className="bg-white flex w-full ">
                 <div className="flex font-joe flex-col items-center justify-center mx-auto mt-28 gap-2 lg:gap-6">
                     <p className='font-bold text-xl lg:text-5xl'>Recent News Topics</p>

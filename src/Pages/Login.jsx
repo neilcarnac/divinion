@@ -24,7 +24,7 @@ const Login = () => {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
       if (user) {
-        navigate('/dashboard'); // Redirect to dashboard or another page
+        navigate('/admin'); // Redirect to dashboard or another page
       }
     } catch (error) {
       setError('Failed to log in. Please check your credentials.');

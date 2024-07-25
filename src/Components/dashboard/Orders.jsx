@@ -17,6 +17,8 @@ import { collection, addDoc, getDocs, deleteDoc, doc } from 'firebase/firestore'
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { UserContext } from '../../Context/UserContext'; // Import UserContext
 
+const ADMIN_USER_ID = 'uFlY3e3ZKHX9Aa7tDOsTO5cYKrf2'; // Replace with your actual admin user ID
+
 // Generate Order Data
 function createData(id, date, name, companyName, phoneNumber, paymentMethod, amount) {
   return { id, date, name, companyName, phoneNumber, paymentMethod, amount };
@@ -24,6 +26,8 @@ function createData(id, date, name, companyName, phoneNumber, paymentMethod, amo
 
 const Orders = () => {
   const { currentUser } = useContext(UserContext); // Get current user from context
+  const isAdmin = currentUser?.uid === ADMIN_USER_ID;
+
   // console.log(currentUser);
   const [open, setOpen] = useState(false);
   const [openCreateBusinessUser, setOpenCreateBusinessUser] = useState(false);
@@ -47,10 +51,48 @@ const Orders = () => {
 
   useEffect(() => {
     if (currentUser) {
-      fetchData();
-      fetchBusinessUsers(); // Fetch business users on component mount
+      if (isAdmin) {
+        fetchAllCustomers(); // Fetch all customers if the user is an admin
+        fetchBusinessUsers(); // Fetch business users if the user is an admin
+      } else {
+        fetchData(); // Fetch data for the current business user
+      }
     }
-  }, [currentUser]);
+  }, [currentUser, isAdmin]);
+  ;
+
+  const fetchAllCustomers = async () => {
+    try {
+      // Fetch all business users
+      const businessUsersSnapshot = await getDocs(collection(db, 'Admin/Business-Users/BusinessUsers'));
+      const allCustomers = [];
+
+      for (const userDoc of businessUsersSnapshot.docs) {
+        const userId = userDoc.id;
+
+        // Fetch customers for each business user
+        const customersSnapshot = await getDocs(collection(db, `Admin/Business-Users/BusinessUsers/${userId}/Customers`));
+
+        customersSnapshot.forEach((customerDoc) => {
+          const data = customerDoc.data();
+          allCustomers.push(createData(
+            customerDoc.id,
+            data.date,
+            data.name,
+            data.companyName,
+            data.phoneNumber,
+            `VISA ⠀•••• ${data.creditCardNumber.slice(-4)}`,
+            Math.random() * 1000 // Placeholder for amount
+          ));
+        });
+      }
+
+      setRows(allCustomers);
+    } catch (error) {
+      console.error('Error fetching all customers: ', error);
+    }
+  };
+
 
   // Function to handle delete operation
   const handleDelete = async (orderId) => {
@@ -76,6 +118,7 @@ const Orders = () => {
 
     try {
       const querySnapshot = await getDocs(collection(db, `Admin/Business-Users/BusinessUsers/${currentUser.uid}/Customers`));
+
       const customers = [];
       querySnapshot.forEach((doc) => {
         const data = doc.data();
@@ -270,7 +313,7 @@ const Orders = () => {
           ))}
         </TableBody>
       </Table>
-      <Link color="primary" href="#" onClick={handleClickOpen} sx={{ mt: 3 }}>
+      <Link color="primary" href="#" onClick={handleClickOpen} sx={{ mt: 3, mb: 3 }}>
         Create a Customer
       </Link>
 

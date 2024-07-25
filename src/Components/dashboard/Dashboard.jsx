@@ -13,7 +13,9 @@ import Badge from '@mui/material/Badge';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
-import Link from '@mui/material/Link';
+import Link from '@mui/material/Link'
+import Charts from './Charts';
+import NewsUpload from './NewsUpload';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import NotificationsIcon from '@mui/icons-material/Notifications';
@@ -41,7 +43,7 @@ const Copyright = (props) => {
 const drawerWidth = 240;
 
 const AppBar = styled(MuiAppBar, {
-  shouldForwardProp: (prop) => prop !== 'open',
+  shouldForwardProp: (prop) => prop !== 'close',
 })(({ theme, open }) => ({
   zIndex: theme.zIndex.drawer + 1,
   transition: theme.transitions.create(['width', 'margin'], {
@@ -58,7 +60,7 @@ const AppBar = styled(MuiAppBar, {
   }),
 }));
 
-const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
+const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'close' })(
   ({ theme, open }) => ({
     '& .MuiDrawer-paper': {
       position: 'relative',
@@ -96,7 +98,7 @@ const Dashboard = () => {
     <ThemeProvider theme={defaultTheme}>
       <Box sx={{ display: 'flex' }}>
         <CssBaseline />
-        <AppBar position="absolute" open={open}>
+        <AppBar position="absolute" open={!open}>
           <Toolbar
             sx={{
               pr: '24px', // keep right padding when drawer closed
@@ -112,7 +114,7 @@ const Dashboard = () => {
                 ...(open && { display: 'none' }),
               }}
             >
-              <MenuIcon />
+              {/* <MenuIcon /> */}
             </IconButton>
             <Typography
               component="h1"
@@ -123,14 +125,14 @@ const Dashboard = () => {
             >
               Dashboard
             </Typography>
-            <IconButton color="inherit">
+            {/* <IconButton color="inherit">
               <Badge badgeContent={4} color="secondary">
                 <NotificationsIcon />
               </Badge>
-            </IconButton>
+            </IconButton> */}
           </Toolbar>
         </AppBar>
-        <Drawer variant="permanent" open={open}>
+        {/* <Drawer variant="permanent" open={open}>
           <Toolbar
             sx={{
               display: 'flex',
@@ -145,11 +147,11 @@ const Dashboard = () => {
           </Toolbar>
           <Divider />
           <List component="nav">
-            <MainListItems />
-            <Divider sx={{ my: 1 }} />
-            {/* <SecondaryListItems /> */}
-          </List>
-        </Drawer>
+            {/* <MainListItems /> */}
+        {/* <Divider sx={{ my: 1 }} /> */}
+        {/* <SecondaryListItems /> */}
+        {/* </List> */}
+        {/* </Drawer> */}
         <Box
           component="main"
           sx={{
@@ -174,8 +176,10 @@ const Dashboard = () => {
                     height: 240,
                   }}
                 >
+                  <Charts />
                 </Paper>
               </Grid>
+
               <Grid item xs={12} md={4} lg={3}>
                 <Paper
                   sx={{
@@ -193,6 +197,19 @@ const Dashboard = () => {
                   <Orders />
                 </Paper>
               </Grid>
+            </Grid>
+            <Grid item xs={12} md={8} lg={9}>
+              <Paper
+                sx={{
+                  p: 2,
+                  mt: 4,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  height: 240,
+                }}
+              >
+                <NewsUpload />
+              </Paper>
             </Grid>
             <Copyright sx={{ pt: 4 }} />
           </Container>
