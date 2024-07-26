@@ -9,6 +9,7 @@ import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
+import Button from '@mui/material/Button';
 import Badge from '@mui/material/Badge';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
@@ -23,6 +24,9 @@ import { MainListItems, SecondaryListItems } from './ListItem';
 import Deposits from './Deposits';
 import Orders from './Orders';
 import { UserContext } from '../../Context/UserContext'; // Import UserContext
+import { signOut } from 'firebase/auth';
+import { auth } from '../Firebase/firebaseConfig'; // Import your Firebase config
+import { useNavigate } from 'react-router-dom';
 
 function preventDefault(event) {
   event.preventDefault();
@@ -87,6 +91,16 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'close'
     },
   }),
 );
+const handleLogout = async () => {
+  try {
+    await signOut(auth);
+    console.log('User logged out successfully');
+    // Optionally, redirect or show a message
+    window.location.href = '/login'; // Redirect to login page
+  } catch (error) {
+    console.error('Error logging out: ', error);
+  }
+};
 
 const defaultTheme = createTheme();
 
@@ -95,7 +109,23 @@ const Dashboard = () => {
   const toggleDrawer = () => {
     setOpen(!open);
   };
-  const { isAdmin } = useContext(UserContext);
+  const { handleLogout, currentUser, isAdmin } = useContext(UserContext);
+
+  const navigate = useNavigate();
+  const onLogoutClick = async () => {
+    try {
+      await handleLogout();
+      // Redirect based on role
+      if (isAdmin) {
+        navigate('/admin');
+      } else {
+        navigate('/');
+      }
+    } catch (error) {
+      console.error('Logout error:', error);
+    }
+  };
+
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -210,10 +240,14 @@ const Dashboard = () => {
             )}
 
             <Copyright sx={{ pt: 4 }} />
+            <div className="flex items-center">
+              <Button variant='contained' color='secondary' onClick={onLogoutClick} className='p-3 '>Log Out</Button>
+            </div>
           </Container>
         </Box>
       </Box>
     </ThemeProvider>
+
   );
 };
 

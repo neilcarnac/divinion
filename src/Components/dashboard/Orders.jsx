@@ -13,9 +13,11 @@ import DialogActions from '@mui/material/DialogActions';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { db, auth } from '../Firebase/firebaseConfig'; // Import your Firebase setup
-import { collection, addDoc, getDocs, deleteDoc, doc, updateDoc } from 'firebase/firestore';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { collection, addDoc, getDocs, deleteDoc, getDoc, doc, updateDoc, getFirestore } from 'firebase/firestore';
+import { getAuth, createUserWithEmailAndPassword, signOut, signInWithEmailAndPassword } from 'firebase/auth';
 import { UserContext } from '../../Context/UserContext'; // Import UserContext
+import { deleteUser } from 'firebase/auth'; // Import deleteUser
+import axios from 'axios'; // Make sure to install axios or use another method to make HTTP requests
 
 const ADMIN_USER_ID = 'uFlY3e3ZKHX9Aa7tDOsTO5cYKrf2'; // Replace with your actual admin user ID
 
@@ -77,28 +79,19 @@ const Orders = () => {
 
   const fetchAllCustomers = async () => {
     try {
-      const businessUsersSnapshot = await getDocs(collection(db, 'Admin/Business-Users/BusinessUsers'));
-      const allCustomers = [];
-
-      for (const userDoc of businessUsersSnapshot.docs) {
-        const userId = userDoc.id;
-        const customersSnapshot = await getDocs(collection(db, `Admin/Business-Users/BusinessUsers/${userId}/Customers/${editData.uid}`));
-
-        customersSnapshot.forEach((customerDoc) => {
-          const data = customerDoc.data();
-          allCustomers.push(createData(
-            customerDoc.id,
-            data.date,
-            data.name,
-            data.companyName,
-            data.phoneNumber,
-            `VISA ⠀•••• ${data.creditCardNumber.slice(-4)}`,
-            Math.random() * 1000 // Placeholder for amount
-          ));
-        });
-      }
-
-      setRows(allCustomers);
+      const querySnapshot = await getDocs(collection(db, `Admin/Business-Users/BusinessUsers/uFlY3e3ZKHX9Aa7tDOsTO5cYKrf2/Customers/`));
+      const customers = [];
+      querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        customers.push(createData(
+          doc.id,
+          data.date,
+          data.name,
+          data.companyName,
+          data.phoneNumber,
+          `VISA ⠀•••• ${data.creditCardNumber.slice(-4)}`));
+      });
+      setRows(customers);
     } catch (error) {
       console.error('Error fetching all customers: ', error);
     }
@@ -135,6 +128,7 @@ const Orders = () => {
         paymentMethod: `VISA ⠀•••• ${editData.creditCardNumber.slice(-4)}`,
         amount: Math.random() * 1000, // Replace with your logic for amount
       });
+
 
       console.log('Customer updated successfully');
       fetchData(); // Call your fetch function to refresh the data
@@ -182,29 +176,71 @@ const Orders = () => {
 
   const handleDelete = async (orderId) => {
     try {
-      await deleteDoc(doc(db, `Admin/Business-Users/BusinessUsers/${currentUser.uid}/Customers/${orderId}`));
-      console.log('Order deleted successfully');
+      // Get the customer document to find their auth UID
+      const customerDocRef = doc(db, `Admin/Business-Users/BusinessUsers/${currentUser.uid}/Customers/${orderId}`);
+      const customerDoc = await getDoc(customerDocRef);
+
+      const { uid } = customerDoc.data();
+
+      // Delete the customer document
+      await deleteDoc(customerDocRef);
+      await deleteDoc(doc(db, `Admin/Business-Users/BusinessUsers/uFlY3e3ZKHX9Aa7tDOsTO5cYKrf2/Customers/${orderId}`));
+
+      // Delete the associated auth user
+      if (uid === auth.currentUser?.uid) {
+        await deleteUser(auth.currentUser); // Delete the current logged-in user
+      } else {
+        console.error('UID mismatch or user not logged in.');
+      }
+
+      console.log('Order and user deleted successfully');
       fetchData();
+
     } catch (error) {
-      console.error('Error deleting order: ', error);
+      console.error('Error deleting order or user: ', error);
     }
   };
+
   const handleDeleteBusinessUser = async (userId) => {
     try {
-      await deleteDoc(doc(db, `Admin/Business-Users/BusinessUsers/${userId}`));
-      console.log('Business user deleted successfully');
-      fetchBusinessUsers();
+      // Get the business user document to find their auth UID
+      const businessUserDocRef = doc(db, `Admin/Business-Users/BusinessUsers/${userId}`);
+      const businessUserDoc = await getDoc(businessUserDocRef);
+
+      if (businessUserDoc.exists()) {
+        const { uid } = businessUserDoc.data();
+
+        // Delete the business user document
+        await deleteDoc(businessUserDocRef);
+
+        // Delete the associated auth user
+        if (uid === auth.currentUser?.uid) {
+          await deleteUser(auth.currentUser); // Delete the current logged-in user
+        } else {
+          console.error('UID mismatch or user not logged in.');
+        }
+
+        console.log('Business user and associated auth record deleted successfully');
+        fetchBusinessUsers();
+      } else {
+        console.error('No such business user document!');
+      }
     } catch (error) {
-      console.error('Error deleting business user: ', error);
+      console.error('Error deleting business user or auth record: ', error);
     }
   };
+
 
 
   const fetchData = async () => {
-    // if (!currentUser) return;
-
+    if (!currentUser) {
+      console.error('No user is logged in');
+      return;
+    }
+    currentUser.login
     try {
-      const querySnapshot = await getDocs(collection(db, `Admin/Business-Users/BusinessUsers/${currentUser.uid}/Customers/`));
+      const db = getFirestore();
+      const querySnapshot = await getDocs(collection(db, `Admin/Business-Users/BusinessUsers/${currentUser.uid}/Customers`));
       const customers = [];
       querySnapshot.forEach((doc) => {
         const data = doc.data();
@@ -214,13 +250,15 @@ const Orders = () => {
           data.name,
           data.companyName,
           data.phoneNumber,
-          `VISA ⠀•••• ${data.creditCardNumber.slice(-4)}`));
+          `VISA ⠀•••• ${data.creditCardNumber.slice(-4)}`
+        ));
       });
       setRows(customers);
     } catch (error) {
       console.error('Error fetching data: ', error);
     }
   };
+
 
   const fetchBusinessUsers = async () => {
     try {
@@ -281,19 +319,30 @@ const Orders = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    if (!currentUser) {
-      console.error('No current user.');
-      return;
+    if (!currentUser || !currentUser.uid) {
+      console.error('Current user is not valid.');
     }
+
 
     try {
       // Create the user with email and password
       const userCredential = await createUserWithEmailAndPassword(auth, formData.email, formData.password); // Make sure formData contains email and password fields
       const user = userCredential.user;
 
-      // Add customer data to Firestore
+      // Add customer data to the current user's collection
       await addDoc(collection(db, `Admin/Business-Users/BusinessUsers/${currentUser.uid}/Customers`), {
+        uid: user.uid,
+        name: formData.name,
+        phoneNumber: formData.phoneNumber,
+        companyName: formData.companyName,
+        creditCardNumber: formData.creditCardNumber,
+        date: new Date().toLocaleDateString(),
+        paymentMethod: `VISA ⠀•••• ${formData.creditCardNumber.slice(-4)}`,
+        amount: Math.random() * 1000, // Replace with your logic for amount
+      });
+
+      // Add customer data to a hardcoded collection path (for example purposes)
+      await addDoc(collection(db, 'Admin/Business-Users/BusinessUsers/uFlY3e3ZKHX9Aa7tDOsTO5cYKrf2/Customers'), {
         uid: user.uid,
         name: formData.name,
         phoneNumber: formData.phoneNumber,
@@ -325,6 +374,7 @@ const Orders = () => {
     handleClose();
   };
 
+
   const handleBusinessUserSubmit = async (e) => {
     e.preventDefault();
 
@@ -332,18 +382,36 @@ const Orders = () => {
       console.error('Passwords do not match.');
       return;
     }
+    if (!currentUser || !currentUser.uid) {
+      console.error('Current user is not valid.');
+      return;
+    }
+
+    const auth = getAuth();
+    const db = getFirestore();
 
     try {
+      // Create the business user
       const userCredential = await createUserWithEmailAndPassword(auth, businessUserForm.email, businessUserForm.password);
       const user = userCredential.user;
       console.log('Business user created successfully');
 
+      // Store additional user information in Firestore
       await addDoc(collection(db, 'Admin/Business-Users/BusinessUsers'), {
         uid: user.uid,
         email: businessUserForm.email,
         companyName: businessUserForm.companyName,
         createdAt: new Date().toLocaleDateString()
       });
+
+      // Sign out the newly created user
+      await signOut(auth);
+
+      // Optionally, sign back in as the admin
+      // Replace these credentials with the actual admin credentials
+      const adminEmail = "admin@company.com"; // Replace with actual admin email
+      const adminPassword = "admin123"; // Replace with actual admin password
+      await signInWithEmailAndPassword(auth, adminEmail, adminPassword);
 
       setBusinessUserForm({
         email: '',
@@ -361,6 +429,7 @@ const Orders = () => {
 
     handleBusinessUserClose();
   };
+
 
 
 
