@@ -6,7 +6,7 @@ import { UserContext } from '../../Context/UserContext';
 const Chart = () => {
   const { currentUser } = useContext(UserContext); // Get current user from context
   const [userEmail, setUserEmail] = useState('');
-
+  const [companyName, setCompanyName] = useState('');
   useEffect(() => {
     const fetchBusinessUserEmail = async () => {
       if (currentUser && currentUser.uid) {
@@ -20,6 +20,7 @@ const Chart = () => {
             querySnapshot.forEach((doc) => {
               const data = doc.data();
               setUserEmail(data.email);
+              setCompanyName(data.companyName);
             });
           } else {
             console.log('No such user document!');
@@ -35,7 +36,7 @@ const Chart = () => {
 
   return (
     <>
-      <p className='text-lg'>Welcome Back User</p>
+      <p className='text-lg'>User is working in {companyName}</p>
     </>
   );
 };

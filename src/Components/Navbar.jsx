@@ -87,6 +87,16 @@ function Navbar() {
                   Contact
                 </Link>
               </li>
+              <li>
+                <Link
+                  to="/login"
+                  className={`block py-2 px-3 rounded md:p-0 ${isActive('/contact') ? 'text-dark-green' : 'text-gray-900 hover:text-dark-green'
+                    }`}
+                >
+                  Login
+                </Link>
+              </li>
+
             </ul>
           </div>
         </div>

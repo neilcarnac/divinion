@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import MuiDrawer from '@mui/material/Drawer';
@@ -22,10 +22,12 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import { MainListItems, SecondaryListItems } from './ListItem';
 import Deposits from './Deposits';
 import Orders from './Orders';
+import { UserContext } from '../../Context/UserContext'; // Import UserContext
 
 function preventDefault(event) {
   event.preventDefault();
 }
+
 
 const Copyright = (props) => {
   return (
@@ -93,6 +95,7 @@ const Dashboard = () => {
   const toggleDrawer = () => {
     setOpen(!open);
   };
+  const { isAdmin } = useContext(UserContext);
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -198,19 +201,14 @@ const Dashboard = () => {
                 </Paper>
               </Grid>
             </Grid>
-            <Grid item xs={12} md={8} lg={9}>
-              <Paper
-                sx={{
-                  p: 2,
-                  mt: 4,
-                  display: 'flex',
-                  flexDirection: 'column',
-                  height: 240,
-                }}
-              >
-                <NewsUpload />
-              </Paper>
-            </Grid>
+            {isAdmin && (
+              <Grid item xs={12} md={8} lg={9}>
+                <Paper sx={{ p: 2, mt: 4, display: 'flex', flexDirection: 'column', height: 240 }}>
+                  <NewsUpload />
+                </Paper>
+              </Grid>
+            )}
+
             <Copyright sx={{ pt: 4 }} />
           </Container>
         </Box>

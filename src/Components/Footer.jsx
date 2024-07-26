@@ -24,6 +24,12 @@ function Footer() {
 
                       Subscribe</button>
                   </a>
+                  <Link
+                    to="/adminLogin"
+                    className='p-4 bg-black text-white rounded-lg'
+                  >
+                    Admin Login
+                  </Link>
                 </div>
               </div>
             </div>
@@ -101,7 +107,7 @@ function Footer() {
             </div>
           </div>
         </div>
-      </footer>
+      </footer >
 
     </>
   )
