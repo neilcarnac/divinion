@@ -96,7 +96,15 @@ function Navbar() {
                   Login
                 </Link>
               </li>
-
+              <li>
+                <Link
+                  to="/admin"
+                  className={`block py-2 px-3 rounded md:p-0 ${isActive('/contact') ? 'text-dark-green' : 'text-gray-900 hover:text-dark-green'
+                    }`}
+                >
+                  Dashboard
+                </Link>
+              </li>
             </ul>
           </div>
         </div>
