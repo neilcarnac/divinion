@@ -54,6 +54,7 @@ const teamMembers = [
 
 const AboutBanThree = () => {
     const [selectedPerson, setSelectedPerson] = useState(null);
+    const [isCentered, setIsCentered] = useState(true);
 
     const handleImageClick = (person) => {
         setSelectedPerson(person);
@@ -63,26 +64,46 @@ const AboutBanThree = () => {
         setSelectedPerson(null);
     };
 
+    const toggleLayout = () => {
+        setIsCentered(!isCentered);
+    };
+
+    const renderRows = (rows) => {
+        return rows.map((row, rowIndex) => (
+            <div
+                className={`flex lg:flex-row md:flex-row flex-col items-center  lg:gap-0 md:gap-0 gap-10 p-2 lg:p-16 justify-between `}
+                key={rowIndex}
+            >
+                {row.map((person) => (
+                    <div className="flex flex-col p-2" key={person.name} onClick={() => handleImageClick(person)}>
+                        <img src={person.image} className='rounded-xl w-[300px] h-[350px] cursor-pointer' alt={person.name} />
+                        <p className='mt-4 font-semibold'>{person.name}</p>
+                        <p className='text-gray-500 text-sm'>{person.position}</p>
+                    </div>
+                ))}
+            </div>
+        ));
+    };
+
+    const rows = [
+        teamMembers.slice(0, 3),
+        teamMembers.slice(3, 6),
+        teamMembers.slice(5, 8),
+    ];
+
     return (
         <>
-            <div className="flex flex-col p-16 lg:mt-20 mt-10">
-                <div className="flex flex-col gap-4 p-16 items-center">
+            <div className="flex flex-col lg:p-16 p-2 lg:mt-20 mt-10">
+                <div className="flex flex-col lg:gap-4 gap-2 lg:p-16 p-8 items-center">
                     <p>BEHIND THE BLOCK</p>
-                    <p className='text-4xl sm:text-2xl font-semibold'>Empowering the world to design</p>
-                    <p className='sm:pl-8 sm:pr-8  md:text-base lg:text-base sm:text-xs text-center text-[#999999] leading-tight'>Lorem ipsum dolor sit amet, consectetur</p>
+                    <p className='text-4xl sm:text-2xl text-center font-semibold'>Empowering the world to design</p>
+                    <p className='sm:pl-2 sm:pr-2 text-base text-center text-[#999999] leading-tight'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas quasi, amet, veniam excepturi aperiam eaque maiores animi nemo expedita dolorem similique tenetur unde adipisci voluptas. Earum amet temporibus maiores iure, iusto excepturi, aliquam ipsam beatae blanditiis cum consectetur minus cupiditate eum molestiae non.</p>
                 </div>
+                {/* <button onClick={toggleLayout} className="self-center mb-8 px-4 py-2 bg-blue-500 text-white rounded">
+                    Toggle Layout
+                </button> */}
                 <div className="flex flex-col">
-                    {teamMembers.slice(0, 3).map((member, index) => (
-                        <div className="flex lg:flex-row md:flex-row flex-col items-center justify-between p-16" key={index}>
-                            {teamMembers.slice(index * 3, (index + 1) * 3).map((person) => (
-                                <div className="flex flex-col p-3" key={person.name} onClick={() => handleImageClick(person)}>
-                                    <img src={person.image} className='rounded-xl w-[300px] h-[350px] cursor-pointer' alt={person.name} />
-                                    <p className='mt-4 font-semibold'>{person.name}</p>
-                                    <p className='text-gray-500 text-sm'>{person.position}</p>
-                                </div>
-                            ))}
-                        </div>
-                    ))}
+                    {renderRows(rows)}
                 </div>
             </div>
             <Modal isOpen={!!selectedPerson} onClose={closeModal} person={selectedPerson} />

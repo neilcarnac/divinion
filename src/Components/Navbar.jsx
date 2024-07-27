@@ -14,7 +14,7 @@ function Navbar() {
 
   return (
     <>
-      <nav className="sticky z-30 top-0 p-2 bg-transparent">
+      <nav className="z-30 top-0 p-2 bg-transparent">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
           {!show && (
             <>
@@ -96,7 +96,7 @@ function Navbar() {
                   Login
                 </Link>
               </li>
-              
+
             </ul>
           </div>
         </div>

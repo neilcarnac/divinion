@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-
+import { Link } from 'react-router-dom';
 
 const Modal = ({ text, visible, onClose }) => {
     if (!visible) return null;
@@ -87,10 +87,11 @@ const HomBanOne = () => {
                         </li>
                     </ul>
                 </div>
-
-                <button className='bg-[#7B61FF] p-4 lg:w-1/5 sm:w-1/2 rounded-sm hover:bg-transparent transition duration-500'>
-                    GET STARTED
-                </button>
+                <Link to="/login" >
+                    <button className='bg-[#7B61FF] p-4 lg:w-1/5 sm:w-1/2 rounded-sm hover:bg-transparent transition duration-500'>
+                        GET STARTED
+                    </button>
+                </Link>
             </div>
 
             <Modal
