@@ -30,7 +30,7 @@ const HomBanTwo = () => {
         <>
             <div className="mx-auto mt-16 flex flex-col items-start lg:p-8 p-4 bg-black/90 text-white sm:gap-2 rounded-xl lg:w-1/4 w-1/2">
                 <p className="font-bold sm:leading-none lg:text-2xl text-xl">Current AUM Amount:</p>
-                <p className="lg:text-xl text-sm">${amount}</p>
+                <p className="lg:text-xl text-sm">₹{amount}/-</p>
 
             </div>
 

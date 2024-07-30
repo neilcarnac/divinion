@@ -48,8 +48,8 @@ const Deposits = () => {
   return (
     <>
       <Title>Current AUM</Title>
-      <Typography component="p" variant="h4">
-        {aum !== null ? `$${aum.toFixed(2)}` : ''}
+      <Typography component="p" variant="h5">
+        {aum !== null ? `₹${aum.toFixed(2)}` : ''}
       </Typography>
       <div>
         {isEditing ? (
