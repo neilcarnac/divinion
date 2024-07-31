@@ -13,17 +13,17 @@ import DialogActions from '@mui/material/DialogActions';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { db, auth } from '../Firebase/firebaseConfig'; // Import your Firebase setup
-import { collection, addDoc, getDocs, deleteDoc, getDoc, doc, updateDoc, getFirestore } from 'firebase/firestore';
-import { getAuth, createUserWithEmailAndPassword, signOut, signInWithEmailAndPassword } from 'firebase/auth';
+import { collection, addDoc, setDoc, getDocs, deleteDoc, getDoc, doc, updateDoc, getFirestore } from 'firebase/firestore';
+import { getAuth, reauthenticateWithCredential, EmailAuthProvider, createUserWithEmailAndPassword, signOut, signInWithEmailAndPassword } from 'firebase/auth';
 import { UserContext } from '../../Context/UserContext'; // Import UserContext
 import { deleteUser } from 'firebase/auth'; // Import deleteUser
 import axios from 'axios'; // Make sure to install axios or use another method to make HTTP requests
 
-const ADMIN_USER_ID = 'uFlY3e3ZKHX9Aa7tDOsTO5cYKrf2'; // Replace with your actual admin user ID
+const ADMIN_USER_ID = 'KtaLiUYI6SZmNVLEhU1Xe8N5npJ2'; // Replace with your actual admin user ID
 
 // Generate Order Data
-function createData(id, date, name, companyName, phoneNumber, paymentMethod, amount) {
-  return { id, date, name, companyName, phoneNumber, paymentMethod, amount };
+function createData(id, date, name, companyName, phoneNumber, amount) {
+  return { id, date, name, companyName, phoneNumber, amount };
 }
 
 const Orders = () => {
@@ -40,7 +40,6 @@ const Orders = () => {
     name: '',
     phoneNumber: '',
     companyName: '',
-    creditCardNumber: '',
     email: '', // Reset email field if necessary
     password: ''
   });
@@ -50,7 +49,6 @@ const Orders = () => {
     name: '',
     phoneNumber: '',
     companyName: '',
-    creditCardNumber: ''
   });
 
   const [businessUserForm, setBusinessUserForm] = useState({
@@ -79,7 +77,7 @@ const Orders = () => {
 
   const fetchAllCustomers = async () => {
     try {
-      const querySnapshot = await getDocs(collection(db, `Admin/Business-Users/BusinessUsers/uFlY3e3ZKHX9Aa7tDOsTO5cYKrf2/Customers/`));
+      const querySnapshot = await getDocs(collection(db, `Admin/Business-Users/BusinessUsers/KtaLiUYI6SZmNVLEhU1Xe8N5npJ2/Customers/`));
       const customers = [];
       querySnapshot.forEach((doc) => {
         const data = doc.data();
@@ -89,7 +87,8 @@ const Orders = () => {
           data.name,
           data.companyName,
           data.phoneNumber,
-          `VISA ⠀•••• ${data.creditCardNumber.slice(-4)}`));
+          data.email
+        ));
       });
       setRows(customers);
     } catch (error) {
@@ -123,9 +122,7 @@ const Orders = () => {
         name: editData.name,
         phoneNumber: editData.phoneNumber,
         companyName: editData.companyName,
-        creditCardNumber: editData.creditCardNumber,
         date: new Date().toLocaleDateString(),
-        paymentMethod: `VISA ⠀•••• ${editData.creditCardNumber.slice(-4)}`,
         amount: Math.random() * 1000, // Replace with your logic for amount
       });
 
@@ -149,7 +146,6 @@ const Orders = () => {
       name: customer.name,
       phoneNumber: customer.phoneNumber,
       companyName: customer.companyName,
-      creditCardNumber: customer.paymentMethod
     });
     setOpenEdit(true);
   };
@@ -170,40 +166,63 @@ const Orders = () => {
       name: '',
       phoneNumber: '',
       companyName: '',
-      creditCardNumber: ''
     });
   };
 
-  const handleDelete = async (orderId) => {
+  const handleDelete = async (orderId, email, password) => {
+    const auth = getAuth();
+    const db = getFirestore();
+
+    // Sign in the user if they are not logged in
+
+    const currentUser = auth.currentUser;
+
+    if (!currentUser) {
+      console.error('No user is currently logged in.');
+      return;
+    }
+
     try {
-      // Get the customer document to find their auth UID
+      // Get the customer document
       const customerDocRef = doc(db, `Admin/Business-Users/BusinessUsers/${currentUser.uid}/Customers/${orderId}`);
       const customerDoc = await getDoc(customerDocRef);
+      const customerData = customerDoc.data();
 
-      const { uid } = customerDoc.data();
+      if (!customerData) {
+        console.error('Customer data not found.');
+        return;
+      }
 
       // Delete the customer document
       await deleteDoc(customerDocRef);
-      await deleteDoc(doc(db, `Admin/Business-Users/BusinessUsers/uFlY3e3ZKHX9Aa7tDOsTO5cYKrf2/Customers/${orderId}`));
 
-      // Delete the associated auth user
-      if (uid === auth.currentUser?.uid) {
-        await deleteUser(auth.currentUser); // Delete the current logged-in user
-      } else {
-        console.error('UID mismatch or user not logged in.');
-      }
+      // Delete the currently logged-in user
 
       console.log('Order and user deleted successfully');
-      fetchData();
+      fetchData(); // Refresh data if needed
 
     } catch (error) {
       console.error('Error deleting order or user: ', error);
     }
   };
+  const handleDeleteBusinessUser = async (userId, adminEmail, adminPassword) => {
+    const auth = getAuth();
+    const db = getFirestore();
 
-  const handleDeleteBusinessUser = async (userId) => {
+    // Sign in as admin if necessary
+    if (!auth.currentUser) {
+      try {
+        await signInWithEmailAndPassword(auth, adminEmail, adminPassword);
+      } catch (error) {
+        console.error('Error signing in admin: ', error);
+        return;
+      }
+    }
+
+    const currentUser = auth.currentUser;
+
     try {
-      // Get the business user document to find their auth UID
+      // Get the business user document
       const businessUserDocRef = doc(db, `Admin/Business-Users/BusinessUsers/${userId}`);
       const businessUserDoc = await getDoc(businessUserDocRef);
 
@@ -214,14 +233,14 @@ const Orders = () => {
         await deleteDoc(businessUserDocRef);
 
         // Delete the associated auth user
-        if (uid === auth.currentUser?.uid) {
-          await deleteUser(auth.currentUser); // Delete the current logged-in user
+        if (uid !== currentUser?.uid) {
+          // This part still won't work on the client side
+          console.error('Cannot delete user directly from client-side.');
         } else {
-          console.error('UID mismatch or user not logged in.');
+          console.log('Business user and associated auth record deleted successfully');
         }
 
-        console.log('Business user and associated auth record deleted successfully');
-        fetchBusinessUsers();
+        fetchBusinessUsers(); // Refresh data if needed
       } else {
         console.error('No such business user document!');
       }
@@ -229,6 +248,7 @@ const Orders = () => {
       console.error('Error deleting business user or auth record: ', error);
     }
   };
+
 
 
 
@@ -250,7 +270,7 @@ const Orders = () => {
           data.name,
           data.companyName,
           data.phoneNumber,
-          `VISA ⠀•••• ${data.creditCardNumber.slice(-4)}`
+          data.email
         ));
       });
       setRows(customers);
@@ -319,38 +339,44 @@ const Orders = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const auth = getAuth();
+    const db = getFirestore();
+    const currentUser = auth.currentUser;
+
     if (!currentUser || !currentUser.uid) {
       console.error('Current user is not valid.');
+      return;
     }
-
 
     try {
       // Create the user with email and password
-      const userCredential = await createUserWithEmailAndPassword(auth, formData.email, formData.password); // Make sure formData contains email and password fields
+      const userCredential = await createUserWithEmailAndPassword(auth, formData.email, formData.password);
       const user = userCredential.user;
 
+      // Sign out the newly created user to avoid automatic login
+      await signOut(auth);
       // Add customer data to the current user's collection
-      await addDoc(collection(db, `Admin/Business-Users/BusinessUsers/${currentUser.uid}/Customers`), {
-        uid: user.uid,
-        name: formData.name,
-        phoneNumber: formData.phoneNumber,
-        companyName: formData.companyName,
-        creditCardNumber: formData.creditCardNumber,
-        date: new Date().toLocaleDateString(),
-        paymentMethod: `VISA ⠀•••• ${formData.creditCardNumber.slice(-4)}`,
-        amount: Math.random() * 1000, // Replace with your logic for amount
-      });
+      if (!isAdmin) {
+        await addDoc(collection(db, `Admin/Business-Users/BusinessUsers/${currentUser.uid}/Customers`), {
+          uid: user.uid,
+          name: formData.name,
+          phoneNumber: formData.phoneNumber,
+          companyName: formData.companyName,
+          email: formData.email,
+          date: new Date().toLocaleDateString(),
+        });
+      }
+      if (isAdmin) {
 
-      // Add customer data to a hardcoded collection path (for example purposes)
-      await addDoc(collection(db, 'Admin/Business-Users/BusinessUsers/uFlY3e3ZKHX9Aa7tDOsTO5cYKrf2/Customers'), {
+      }
+      // Add customer data to a hardcoded collection path
+      await addDoc(collection(db, 'Admin/Business-Users/BusinessUsers/KtaLiUYI6SZmNVLEhU1Xe8N5npJ2/Customers'), {
         uid: user.uid,
         name: formData.name,
         phoneNumber: formData.phoneNumber,
         companyName: formData.companyName,
-        creditCardNumber: formData.creditCardNumber,
+        email: formData.email,
         date: new Date().toLocaleDateString(),
-        paymentMethod: `VISA ⠀•••• ${formData.creditCardNumber.slice(-4)}`,
-        amount: Math.random() * 1000, // Replace with your logic for amount
       });
 
       // Clear the form data
@@ -358,13 +384,18 @@ const Orders = () => {
         name: '',
         phoneNumber: '',
         companyName: '',
-        creditCardNumber: '',
-        email: '', // Reset email field if necessary
-        password: '' // Reset password field if necessary
+        email: '',
+        password: ''
       });
 
       // Re-fetch data to update the table
       fetchData();
+      if (isAdmin) {
+
+        const adminEmail = "admin@company.com"; // Replace with actual admin email
+        const adminPassword = "admin123"; // Replace with actual admin password
+        await signInWithEmailAndPassword(auth, adminEmail, adminPassword);
+      }
 
     } catch (error) {
       console.error('Error adding document: ', error);
@@ -382,6 +413,7 @@ const Orders = () => {
       console.error('Passwords do not match.');
       return;
     }
+
     if (!currentUser || !currentUser.uid) {
       console.error('Current user is not valid.');
       return;
@@ -394,25 +426,19 @@ const Orders = () => {
       // Create the business user
       const userCredential = await createUserWithEmailAndPassword(auth, businessUserForm.email, businessUserForm.password);
       const user = userCredential.user;
-      console.log('Business user created successfully');
+
+      // Sign out the newly created user to avoid automatic login
+      await signOut(auth);
 
       // Store additional user information in Firestore
-      await addDoc(collection(db, 'Admin/Business-Users/BusinessUsers'), {
+      await setDoc(doc(db, 'Admin/Business-Users/BusinessUsers', user.uid), {
         uid: user.uid,
         email: businessUserForm.email,
         companyName: businessUserForm.companyName,
         createdAt: new Date().toLocaleDateString()
       });
 
-      // Sign out the newly created user
-      await signOut(auth);
-
-      // Optionally, sign back in as the admin
-      // Replace these credentials with the actual admin credentials
-      const adminEmail = "admin@company.com"; // Replace with actual admin email
-      const adminPassword = "admin123"; // Replace with actual admin password
-      await signInWithEmailAndPassword(auth, adminEmail, adminPassword);
-
+      // Clear the form data
       setBusinessUserForm({
         email: '',
         password: '',
@@ -422,11 +448,19 @@ const Orders = () => {
         showConfirmPassword: false
       });
 
+      // Re-fetch data to update the table
       fetchBusinessUsers();
+
+      // Optionally, sign back in as the admin
+      const adminEmail = "admin@company.com"; // Replace with actual admin email
+      const adminPassword = "admin123"; // Replace with actual admin password
+      await signInWithEmailAndPassword(auth, adminEmail, adminPassword);
+
     } catch (error) {
       console.error('Error creating business user: ', error);
     }
 
+    // Close the form dialog/modal
     handleBusinessUserClose();
   };
 
@@ -443,7 +477,8 @@ const Orders = () => {
             <TableCell>Name</TableCell>
             <TableCell>Company Name</TableCell>
             <TableCell>Phone Number</TableCell>
-            <TableCell>Payment Method</TableCell>
+            <TableCell>Email</TableCell>
+
             {/* <TableCell align="right">Sale Amount</TableCell> */}
             <TableCell>Actions</TableCell> {/* Add actions column for delete button */}
           </TableRow>
@@ -455,7 +490,8 @@ const Orders = () => {
               <TableCell>{row.name}</TableCell>
               <TableCell>{row.companyName}</TableCell>
               <TableCell>{row.phoneNumber}</TableCell>
-              <TableCell>{row.paymentMethod}</TableCell>
+              <TableCell>{row.email}</TableCell>
+
               {/* <TableCell align="right">{`$${row.amount.toFixed(2)}`}</TableCell> */}
               <TableCell>
                 <Button sx={{ m: 2 }} variant="contained" onClick={() => handleEdit(row)}>
@@ -507,16 +543,7 @@ const Orders = () => {
             value={editData.companyName}
             onChange={handleEditChange}
           />
-          <TextField
-            margin="dense"
-            name="creditCardNumber"
-            label="Credit Card Number"
-            type="text"
-            fullWidth
-            variant="standard"
-            value={editData.creditCardNumber}
-            onChange={handleEditChange}
-          />
+
         </DialogContent>
         <DialogActions>
           <Button onClick={handleEditClose} color="primary">
@@ -586,16 +613,7 @@ const Orders = () => {
             value={formData.companyName}
             onChange={handleChange}
           />
-          <TextField
-            margin="dense"
-            name="creditCardNumber"
-            label="Credit Card Number"
-            type="text"
-            fullWidth
-            variant="standard"
-            value={formData.creditCardNumber}
-            onChange={handleChange}
-          />
+
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">
@@ -688,7 +706,7 @@ const Orders = () => {
               <TableRow>
                 <TableCell>Company Name</TableCell>
                 <TableCell>Email</TableCell>
-                <TableCell>Created At</TableCell>
+                <TableCell>Actions</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -696,7 +714,7 @@ const Orders = () => {
                 <TableRow key={user.id}>
                   <TableCell>{user.companyName}</TableCell>
                   <TableCell>{user.email}</TableCell>
-                  <TableCell>{new Date(user.createdAt).toLocaleDateString()}</TableCell>
+                  {/* <TableCell>{new Date(user.createdAt).toLocaleDateString()}</TableCell> */}
                   <TableCell>
                     <Button onClick={() => handleDeleteBusinessUser(user.id)}>Delete</Button>
                   </TableCell>

@@ -70,6 +70,9 @@ const Login = () => {
                   required
                 />
               </div>
+              <a href="/adminLogin">
+                <p className='mt-6 ml-2 text-blue-500 underline'> Log in as an admin</p>
+              </a>
 
               <button
                 type="submit"
@@ -79,6 +82,7 @@ const Login = () => {
               </button>
 
               {error && <span className='flex items-center text-red-500'>{error}</span>}
+
             </form>
           </div>
         </div>

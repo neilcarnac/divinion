@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { db } from '../Components/Firebase/firebaseConfig'; // Import your Firebase setup
+import { db } from '../Components/Firebase/firebaseConfig';
 import { collection, getDocs } from 'firebase/firestore';
+
 const NewsBanTwo = () => {
     const [newsItems, setNewsItems] = useState([]);
-    const [imageUrl, setImageUrl] = useState(null);
+    const [currentSlide, setCurrentSlide] = useState(0);
+    const [modalOpen, setModalOpen] = useState(false);
+    const [modalContent, setModalContent] = useState({ title: '', description: '' });
 
     useEffect(() => {
         fetchNews();
@@ -23,25 +26,72 @@ const NewsBanTwo = () => {
         }
     };
 
+    const handleNext = () => {
+        setCurrentSlide((prevSlide) => (prevSlide + 1) % newsItems.length);
+    };
+
+    const handlePrev = () => {
+        setCurrentSlide((prevSlide) => (prevSlide - 1 + newsItems.length) % newsItems.length);
+    };
+
+    const openModal = (news) => {
+        setModalContent(news);
+        setModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setModalOpen(false);
+    };
+
     return (
-        <div className="flex flex-col mb-72 bg-white w-full">
-            <div className="flex flex-col text-xs gap-10 justify-between p-20 sm:p-10">
-                <div className="flex flex-col lg:flex-row justify-between gap-4 lg:gap-12">
-                    {newsItems.map((news) => (
-                        <div key={news.id} className="lg:w-1/3 w-full h-auto shadow-md rounded-md p-4 flex flex-col">
-                            <img src={news.image} alt={news.title} className="w-full p-2 h-auto" />
-                            <div className="flex font-sans flex-col gap-4 p-4">
-                                <div className="flex flex-col">
-                                    <p className='font-semibold leading-tight text-sm'>{news.title}</p>
-                                    <p>{news.description}</p>
-                                </div>
-                            </div>
+        <div className="relative rounded-md shadow-md bg-white m-10">
+            {newsItems.length > 0 && (
+                <div className="flex justify-center items-center h-full">
+                    <button
+                        onClick={handlePrev}
+                        className="absolute left-3 bg-white/20 shadow-md p-3 rounded-lg"
+                    >
+                        {"<"}
+
+                    </button>
+                    <div className="m-10">
+                        <img
+                            src={newsItems[currentSlide].image}
+                            alt={newsItems[currentSlide].title}
+                            className="w-full h-full object-cover"
+                        />
+                        <div
+                            className="absolute bottom-10 left-10 bg-black/80 text-white p-3 cursor-pointer"
+                            onClick={() => openModal(newsItems[currentSlide])}
+                        >
+                            <h2 className="lg:text-2xl text-base">{newsItems[currentSlide].title}</h2>
                         </div>
-                    ))}
+                    </div>
+                    <button
+                        onClick={handleNext}
+                        className="absolute right-3 bg-white/20 shadow-md p-3 rounded-lg"
+                    >
+                        {">"}
+                    </button>
                 </div>
-            </div>
+            )}
+
+            {modalOpen && (
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+                    <div className="bg-white p-4 lg:p-6 rounded w-2/3 lg:w-1/3">
+                        <h2 className="text-2xl font-medium mb-4">{modalContent.title}</h2>
+                        <p className="mb-4 ">{modalContent.description}</p>
+                        <button
+                            onClick={closeModal}
+                            className="bg-gray-500 text-white p-2 rounded"
+                        >
+                            Close
+                        </button>
+                    </div>
+                </div>
+            )}
         </div>
     );
-}
+};
 
 export default NewsBanTwo;

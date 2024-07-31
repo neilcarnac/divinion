@@ -1,18 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
 import Title from './Title';
 import { db } from '../Firebase/firebaseConfig'; // Import your Firebase setup
 import { doc, getDoc, setDoc } from 'firebase/firestore';
+import { UserContext } from '../../Context/UserContext'; // Import UserContext
 
 function preventDefault(event) {
   event.preventDefault();
 }
+const ADMIN_USER_ID = 'KtaLiUYI6SZmNVLEhU1Xe8N5npJ2'; // Replace with your actual admin user ID
 
 const Deposits = () => {
   const [aum, setAum] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
   const [newAum, setNewAum] = useState('');
+  const { currentUser, handleLogout } = useContext(UserContext);
 
   useEffect(() => {
     const fetchAum = async () => {
@@ -44,38 +47,43 @@ const Deposits = () => {
     setNewAum(e.target.value);
 
   };
+  const isAdmin = currentUser?.uid === ADMIN_USER_ID;
+
 
   return (
     <>
       <Title>Current AUM</Title>
       <Typography component="p" variant="h5">
-        {aum !== null ? `₹${aum.toFixed(2)}` : ''}
+        {aum !== null ? `₹${aum.toFixed(2)}/-` : ''}
       </Typography>
-      <div>
-        {isEditing ? (
-          <>
-            <input
-              type="number"
-              value={newAum}
-              onChange={handleChange}
-              className="p-2 border"
-            />
+      {isAdmin &&
+
+        <div>
+          {isEditing ? (
+            <>
+              <input
+                type="number"
+                value={newAum}
+                onChange={handleChange}
+                className="p-2 border"
+              />
+              <button
+                onClick={handleSaveClick}
+                className="p-2 bg-green-600 text-white"
+              >
+                Save
+              </button>
+            </>
+          ) : (
             <button
-              onClick={handleSaveClick}
-              className="p-2 bg-green-600 text-white"
+              onClick={handleEditClick}
+              className="p-2 bg-blue-600 text-white"
             >
-              Save
+              Edit
             </button>
-          </>
-        ) : (
-          <button
-            onClick={handleEditClick}
-            className="p-2 bg-blue-600 text-white"
-          >
-            Edit
-          </button>
-        )}
-      </div>
+          )}
+        </div>
+      }
     </>
   );
 }

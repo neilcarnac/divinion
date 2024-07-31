@@ -25,14 +25,12 @@ import Orders from './Orders';
 import Divider from '@mui/material/Divider';
 import List from '@mui/material/List';
 
-const ADMIN_USER_ID = 'uFlY3e3ZKHX9Aa7tDOsTO5cYKrf2'; // Replace with your actual admin user ID
+const ADMIN_USER_ID = 'KtaLiUYI6SZmNVLEhU1Xe8N5npJ2'; // Replace with your actual admin user ID
 
 const Copyright = (props) => (
   <Typography variant="body2" color="text.secondary" align="center" {...props}>
     {'Copyright © '}
-    <Link color="inherit" href="https://mui.com/">
-      Your Website
-    </Link>{' '}
+    <p> Divinion</p>{' '}
     {new Date().getFullYear()}
     {'.'}
   </Typography>
@@ -162,8 +160,8 @@ const Dashboard = () => {
                 </Paper>
               </Grid>
               {isAdmin && (
-                <Grid item xs={12} md={8} lg={9}>
-                  <Paper sx={{ p: 2, mt: 4, display: 'flex', flexDirection: 'column', height: 240 }}>
+                <Grid item xs={12} md={8} lg={12}>
+                  <Paper sx={{ p: 2, mt: 4, display: 'flex', flexDirection: 'column', maxheight: 900 }}>
                     <NewsUpload />
                   </Paper>
                 </Grid>
