@@ -58,13 +58,13 @@ const NewsBanTwo = () => {
                         <img
                             src={newsItems[currentSlide].image}
                             alt={newsItems[currentSlide].title}
-                            className="w-full h-full object-cover"
+                            className="w-[1300px] h-[600px] object-cover"
                         />
                         <div
                             className="absolute bottom-10 left-10 bg-black/80 text-white p-3 cursor-pointer"
                             onClick={() => openModal(newsItems[currentSlide])}
                         >
-                            <h2 className="lg:text-2xl text-base">{newsItems[currentSlide].title}</h2>
+                            <h2 className="lg:text-base text-sm">{newsItems[currentSlide].title}</h2>
                         </div>
                     </div>
                     <button
@@ -80,7 +80,7 @@ const NewsBanTwo = () => {
                 <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
                     <div className="bg-white p-4 lg:p-6 rounded w-2/3 lg:w-1/3">
                         <h2 className="text-2xl font-medium mb-4">{modalContent.title}</h2>
-                        <p className="mb-4 ">{modalContent.description}</p>
+                        <p className="mb-4 overflow-hidden p-3">{modalContent.description}</p>
                         <button
                             onClick={closeModal}
                             className="bg-gray-500 text-white p-2 rounded"

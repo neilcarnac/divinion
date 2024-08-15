@@ -3,7 +3,7 @@ import React from 'react'
 const AboutBanOne = () => {
     return (
         <>
-            <div className="flex mx-auto pt-16 bg-[white]">
+            <div className="flex mx-auto pt-16 bg-white">
                 <div className="flex flex-col items-center mx-auto my-auto gap-4">
                     <div className="flex flex-col sm:pl-8 sm:pr-8  mx-auto items-center gap-2">
                         <p className='text-sm font-medium'>ABOUT BLOCK</p>

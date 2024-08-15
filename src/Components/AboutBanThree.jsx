@@ -75,10 +75,10 @@ const AboutBanThree = () => {
                 key={rowIndex}
             >
                 {row.map((person) => (
-                    <div className="flex flex-col p-2" key={person.name} onClick={() => handleImageClick(person)}>
-                        <img src={person.image} className='rounded-xl w-[300px] h-[350px] cursor-pointer' alt={person.name} />
+                    <div className="flex flex-col p-2 text-white" key={person.name} onClick={() => handleImageClick(person)}>
+                        <img src={person.image} className='rounded-xl shadow-xl w-[300px] h-[350px] cursor-pointer' alt={person.name} />
                         <p className='mt-4 font-semibold'>{person.name}</p>
-                        <p className='text-gray-500 text-sm'>{person.position}</p>
+                        <p className='text-white/50 text-sm'>{person.position}</p>
                     </div>
                 ))}
             </div>
@@ -93,11 +93,11 @@ const AboutBanThree = () => {
 
     return (
         <>
-            <div className="flex flex-col lg:p-16 p-2 lg:mt-20 mt-10">
-                <div className="flex flex-col lg:gap-4 gap-2 lg:p-16 p-8 items-center">
+            <div className="flex flex-col lg:m-10 m-4 bg-[#337c83] rounded-xl lg:p-12 p-2 lg:mt-20 mt-10">
+                <div className="flex text-white flex-col leading-tight  lg:gap-4 gap-2 lg:p-16 p-8 items-center">
                     <p>BEHIND THE BLOCK</p>
-                    <p className='text-4xl sm:text-2xl text-center font-semibold'>Empowering the world to design</p>
-                    <p className='sm:pl-2 sm:pr-2 text-base text-center text-[#999999] leading-tight'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas quasi, amet, veniam excepturi aperiam eaque maiores animi nemo expedita dolorem similique tenetur unde adipisci voluptas. Earum amet temporibus maiores iure, iusto excepturi, aliquam ipsam beatae blanditiis cum consectetur minus cupiditate eum molestiae non.</p>
+                    <p className='text-2xl  lg:text-4xl text-center font-semibold'>Empowering the world to design</p>
+                    <p className='sm:pl-2 sm:pr-2 text-base text-center text-white/50 leading-tight'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas quasi, amet, veniam excepturi aperiam eaque maiores animi nemo expedita dolorem similique tenetur unde adipisci voluptas. Earum amet temporibus maiores iure, iusto excepturi, aliquam ipsam beatae blanditiis cum consectetur minus cupiditate eum molestiae non.</p>
                 </div>
                 {/* <button onClick={toggleLayout} className="self-center mb-8 px-4 py-2 bg-blue-500 text-white rounded">
                     Toggle Layout

@@ -87,10 +87,11 @@ const Orders = () => {
           data.name,
           data.companyName,
           data.phoneNumber,
-          data.email
+          data.email // Ensure email is included here
         ));
       });
       setRows(customers);
+      console.log('All customers fetched successfully:', customers);
     } catch (error) {
       console.error('Error fetching all customers: ', error);
     }
@@ -355,6 +356,9 @@ const Orders = () => {
 
       // Sign out the newly created user to avoid automatic login
       await signOut(auth);
+      // Fetch business user credentials from the database if the current user is not an admin
+
+
       // Add customer data to the current user's collection
       if (!isAdmin) {
         await addDoc(collection(db, `Admin/Business-Users/BusinessUsers/${currentUser.uid}/Customers`), {
@@ -365,10 +369,11 @@ const Orders = () => {
           email: formData.email,
           date: new Date().toLocaleDateString(),
         });
-      }
-      if (isAdmin) {
+        console.log(currentUser)
 
       }
+      console.log(currentUser)
+
       // Add customer data to a hardcoded collection path
       await addDoc(collection(db, 'Admin/Business-Users/BusinessUsers/KtaLiUYI6SZmNVLEhU1Xe8N5npJ2/Customers'), {
         uid: user.uid,
@@ -390,8 +395,14 @@ const Orders = () => {
 
       // Re-fetch data to update the table
       fetchData();
-      if (isAdmin) {
 
+      // Sign in the business user again if they are not an admin
+      if (!isAdmin && businessUserEmail && businessUserPassword) {
+        await signInWithEmailAndPassword(auth, businessUserEmail, businessUserPassword);
+      }
+
+      // Sign in the admin again if needed
+      if (isAdmin) {
         const adminEmail = "admin@company.com"; // Replace with actual admin email
         const adminPassword = "admin123"; // Replace with actual admin password
         await signInWithEmailAndPassword(auth, adminEmail, adminPassword);
@@ -490,7 +501,7 @@ const Orders = () => {
               <TableCell>{row.name}</TableCell>
               <TableCell>{row.companyName}</TableCell>
               <TableCell>{row.phoneNumber}</TableCell>
-              <TableCell>{row.email}</TableCell>
+              <TableCell>{row.amount}</TableCell>
 
               {/* <TableCell align="right">{`$${row.amount.toFixed(2)}`}</TableCell> */}
               <TableCell>
