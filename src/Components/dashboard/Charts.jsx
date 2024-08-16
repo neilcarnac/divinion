@@ -36,7 +36,7 @@ const Chart = () => {
 
   return (
     <>
-      <p className='text-lg'>User is working in {companyName}</p>
+      {/* <p className='text-lg'>User is working in {companyName}</p> */}
     </>
   );
 };
