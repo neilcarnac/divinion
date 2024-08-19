@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom'; // Import necessary components from react-router-dom
+import React, { useState, useContext } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { UserContext } from '../Context/UserContext'; // Adjust the path as necessary
 
 function Navbar() {
   const [show, setShow] = useState(false);
-  const location = useLocation(); // Get the current location
+  const location = useLocation();
+  const { isAdmin } = useContext(UserContext); // Get isAdmin from context
 
   function onNavClick() {
     setShow(!show);
@@ -14,37 +16,40 @@ function Navbar() {
 
   return (
     <>
-      <nav className="z-30 top-0 p-2 bg-transparent">
+      <nav className="z-30 top-0 p-2 sticky bg-white/50">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
           {!show && (
             <>
-              <a href="https://flowbite.com/" className="flex items-center space-x-3 rtl:space-x-reverse">
-                <img src="logo.svg" className="h-8" alt="Flowbite Logo" />
-              </a>
-              <button
-                data-collapse-toggle="navbar-default"
-                onClick={onNavClick}
-                type="button"
-                className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700"
-                aria-controls="navbar-default"
-                aria-expanded="false"
-              >
-                <svg
-                  className="w-5 h-5"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 17 14"
+              <div className="flex items-center justify-center">
+                <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
+                  <img src="logo.svg" className="h-12" alt="Logo" />
+                </a>
+
+                <button
+                  data-collapse-toggle="navbar-default"
+                  onClick={onNavClick}
+                  type="button"
+                  className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700"
+                  aria-controls="navbar-default"
+                  aria-expanded="false"
                 >
-                  <path
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M1 1h15M1 7h15M1 13h15"
-                  />
-                </svg>
-              </button>
+                  <svg
+                    className="w-5 h-5"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 17 14"
+                  >
+                    <path
+                      stroke="currentColor"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M1 1h15M1 7h15M1 13h15"
+                    />
+                  </svg>
+                </button>
+              </div>
             </>
           )}
 
@@ -53,8 +58,7 @@ function Navbar() {
               <li>
                 <Link
                   to="/"
-                  className={`block py-2 px-3 rounded md:p-0 ${isActive('/') ? 'text-dark-green' : 'text-gray-900 hover:text-dark-green'
-                    }`}
+                  className={`block py-2 px-3 rounded md:p-0 ${isActive('/') ? 'text-dark-green' : 'text-gray-900 hover:text-dark-green'}`}
                 >
                   Home
                 </Link>
@@ -62,8 +66,7 @@ function Navbar() {
               <li>
                 <Link
                   to="/about"
-                  className={`block py-2 px-3 rounded md:p-0 ${isActive('/about') ? 'text-dark-green' : 'text-gray-900 hover:text-dark-green'
-                    }`}
+                  className={`block py-2 px-3 rounded md:p-0 ${isActive('/about') ? 'text-dark-green' : 'text-gray-900 hover:text-dark-green'}`}
                 >
                   About
                 </Link>
@@ -71,32 +74,39 @@ function Navbar() {
               <li>
                 <Link
                   to="/blog"
-                  className={`block py-2 px-3 rounded md:p-0 ${isActive('/blog') ? 'text-dark-green' : 'text-gray-900 hover:text-dark-green'
-                    }`}
+                  className={`block py-2 px-3 rounded md:p-0 ${isActive('/blog') ? 'text-dark-green' : 'text-gray-900 hover:text-dark-green'}`}
                 >
                   News
                 </Link>
               </li>
-
               <li>
                 <Link
                   to="/contact"
-                  className={`block py-2 px-3 rounded md:p-0 ${isActive('/contact') ? 'text-dark-green' : 'text-gray-900 hover:text-dark-green'
-                    }`}
+                  className={`block py-2 px-3 rounded md:p-0 ${isActive('/contact') ? 'text-dark-green' : 'text-gray-900 hover:text-dark-green'}`}
                 >
                   Contact
                 </Link>
               </li>
-              <li>
-                <Link
-                  to="/login"
-                  className={`block py-2 px-3 rounded md:p-0 ${isActive('/contact') ? 'text-dark-green' : 'text-gray-900 hover:text-dark-green'
-                    }`}
-                >
-                  Login
-                </Link>
-              </li>
-
+              {isAdmin && (
+                <li>
+                  <Link
+                    to="/admin"
+                    className={`block py-2 px-3 rounded md:p-0 ${isActive('/admin') ? 'text-dark-green' : 'text-gray-900 hover:text-dark-green'}`}
+                  >
+                    Dashboard
+                  </Link>
+                </li>
+              )}
+              {!isAdmin && (
+                <li>
+                  <Link
+                    to="/login"
+                    className={`block py-2 px-3 rounded md:p-0 ${isActive('/login') ? 'text-dark-green' : 'text-gray-900 hover:text-dark-green'}`}
+                  >
+                    Login
+                  </Link>
+                </li>
+              )}
             </ul>
           </div>
         </div>
@@ -107,8 +117,8 @@ function Navbar() {
             <button onClick={onNavClick}>
               <p className="text-xl text-[#7B61FF]">X</p>
             </button>
-            <a href="https://flowbite.com/" className="flex items-center space-x-3 rtl:space-x-reverse">
-              <img src="logo.svg" className="h-7" alt="Flowbite Logo" />
+            <a href="https://.com/" className="flex items-center space-x-3 rtl:space-x-reverse">
+              <img src="logo.svg" className="h-10" alt="Logo" />
             </a>
             <svg
               xmlns="http://www.w3.org/2000/svg"

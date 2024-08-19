@@ -45,7 +45,7 @@ const HomBanOne = () => {
     ];
 
     return (
-        <div className="relative bg-cover z-20 flex flex-col pb-4 sm:pb-10 md:p-8 bg-center w-full h-[76vh] my-auto mt-1" style={{ backgroundImage: "url('/bgg.svg')" }}>
+        <div className="relative bg-cover z-20 flex flex-col pb-4 sm:pb-10 md:p-8 bg-center w-full h-[88vh] my-auto mt-1" style={{ backgroundImage: "url('/hbgg.svg')" }}>
             <div className="flex text-white flex-col gap-10 sm:gap-4 my-auto lg:pl-56 md:pl-20 pl-10 text-left">
                 <div className="flex flex-col font-joe font-bold tracking-wider lg:text-5xl md:text-5xl text-2xl">
                     <p>Meaningful investments in</p>
@@ -87,8 +87,8 @@ const HomBanOne = () => {
                         </li>
                     </ul>
                 </div>
-                <Link to="/login" >
-                    <button className='bg-[#7B61FF] p-4 lg:w-1/5 sm:w-1/2 rounded-sm hover:bg-transparent transition duration-500'>
+                <Link to="/contact" >
+                    <button className='bg-white text-black p-4 lg:w-1/5 sm:w-1/2 rounded-sm hover:bg-transparent transition duration-500'>
                         GET STARTED
                     </button>
                 </Link>

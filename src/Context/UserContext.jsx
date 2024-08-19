@@ -1,4 +1,3 @@
-// src/contexts/UserContext.js
 import React, { createContext, useState, useEffect } from 'react';
 import { auth } from '../Components/Firebase/firebaseConfig';
 import { onAuthStateChanged, signOut, setPersistence, browserLocalPersistence } from 'firebase/auth';
@@ -11,6 +10,8 @@ const UserProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [isAdmin, setIsAdmin] = useState(false);
 
+  const ADMIN_USER_ID = 'KtaLiUYI6SZmNVLEhU1Xe8N5npJ2';
+
   useEffect(() => {
     const setupAuth = async () => {
       try {
@@ -22,14 +23,10 @@ const UserProvider = ({ children }) => {
 
     setupAuth();
 
-
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
-        const db = getFirestore();
-        const userDoc = await getDoc(doc(db, 'users', user.uid));
-        const userData = userDoc.data();
-        setIsAdmin(userData?.role === 'admin');
         setCurrentUser(user);
+        setIsAdmin(user.uid === ADMIN_USER_ID);
       } else {
         setCurrentUser(null);
         setIsAdmin(false);

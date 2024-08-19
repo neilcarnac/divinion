@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { db } from '../Components/Firebase/firebaseConfig';
 import { collection, getDocs } from 'firebase/firestore';
-
+import NewsUpload from './dashboard/NewsUpload';
 const NewsBanTwo = () => {
     const [newsItems, setNewsItems] = useState([]);
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -44,53 +44,59 @@ const NewsBanTwo = () => {
     };
 
     return (
-        <div className="relative rounded-md shadow-md bg-white m-10">
-            {newsItems.length > 0 && (
-                <div className="flex justify-center items-center h-full">
-                    <button
-                        onClick={handlePrev}
-                        className="absolute left-3 bg-white/20 shadow-md p-3 rounded-lg"
-                    >
-                        {"<"}
+        <>
 
-                    </button>
-                    <div className="m-10">
-                        <img
-                            src={newsItems[currentSlide].image}
-                            alt={newsItems[currentSlide].title}
-                            className="w-[1300px] h-[600px] object-cover"
-                        />
-                        <div
-                            className="absolute bottom-10 left-10 bg-black/80 text-white p-3 cursor-pointer"
-                            onClick={() => openModal(newsItems[currentSlide])}
-                        >
-                            <h2 className="lg:text-base text-sm">{newsItems[currentSlide].title}</h2>
-                        </div>
-                    </div>
-                    <button
-                        onClick={handleNext}
-                        className="absolute right-3 bg-white/20 shadow-md p-3 rounded-lg"
-                    >
-                        {">"}
-                    </button>
-                </div>
-            )}
-
-            {modalOpen && (
-                <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
-                    <div className="bg-white p-4 lg:p-6 rounded w-2/3 lg:w-1/3">
-                        <h2 className="text-2xl font-medium mb-4">{modalContent.title}</h2>
-                        <p className="mb-4 overflow-hidden p-3">{modalContent.description}</p>
+            <div className="relative rounded-md shadow-md bg-white m-10">
+                {newsItems.length > 0 && (
+                    <div className="flex justify-center items-center h-full">
                         <button
-                            onClick={closeModal}
-                            className="bg-gray-500 text-white p-2 rounded"
+                            onClick={handlePrev}
+                            className="absolute left-3 bg-white/20 shadow-md p-3 rounded-lg"
                         >
-                            Close
+                            {"<"}
+
+                        </button>
+                        <div className="m-10">
+                            <img
+                                src={newsItems[currentSlide].image}
+                                alt={newsItems[currentSlide].title}
+                                className="w-[1300px] h-[600px] object-cover"
+                            />
+                            <div
+                                className="absolute bottom-10 left-10 bg-black/80 text-white p-3 cursor-pointer"
+                                onClick={() => openModal(newsItems[currentSlide])}
+                            >
+                                <h2 className="lg:text-base text-sm">{newsItems[currentSlide].title}</h2>
+                            </div>
+                        </div>
+                        <button
+                            onClick={handleNext}
+                            className="absolute right-3 bg-white/20 shadow-md p-3 rounded-lg"
+                        >
+                            {">"}
                         </button>
                     </div>
-                </div>
-            )}
-        </div>
+                )}
+
+                {modalOpen && (
+                    <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+                        <div className="bg-white p-4 lg:p-6 rounded w-2/3 lg:w-1/3">
+                            <h2 className="text-2xl font-medium mb-4">{modalContent.title}</h2>
+                            <p className="mb-4 overflow-hidden p-3">{modalContent.description}</p>
+                            <button
+                                onClick={closeModal}
+                                className="bg-gray-500 text-white p-2 rounded"
+                            >
+                                Close
+                            </button>
+                        </div>
+                    </div>
+                )}
+            </div>
+            
+            <NewsUpload />
+
+        </>
     );
 };
 

@@ -76,9 +76,9 @@ const NewsUpload = () => {
     };
 
     return (
-        <div className="flex flex-col p-4">
+        <div className="flex flex-col p-4 lg:m-32 m-10 ">
             <h1 className="text-2xl mb-4">News Upload Platform</h1>
-            <button className="bg-green-500 text-white p-2 rounded mb-4" onClick={() => setShowModal(true)}>Add News</button>
+            <button className="bg-black text-white p-2 rounded mb-4" onClick={() => setShowModal(true)}>Add News</button>
             <table className="table-auto w-full">
                 <thead>
                     <tr>
@@ -101,7 +101,7 @@ const NewsUpload = () => {
 
             {showModal && (
                 <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50">
-                    <div className="bg-white p-4 rounded w-1/3">
+                    <div className="bg-white p-4 rounded ">
                         <h2 className="text-xl mb-4">{currentNews.id ? 'Edit News' : 'Add News'}</h2>
                         <input
                             type="file"
@@ -116,13 +116,14 @@ const NewsUpload = () => {
                             placeholder="Title"
                             value={currentNews.title}
                             onChange={(e) => setCurrentNews({ ...currentNews, title: e.target.value })}
-                            className="mb-4 p-2 border w-full"
+                            className="mb-4 p-2 outline-none border w-full"
                         />
                         <textarea
                             placeholder="Description"
                             value={currentNews.description}
+                            rows={6}
                             onChange={(e) => setCurrentNews({ ...currentNews, description: e.target.value })}
-                            className="mb-4 p-2 border w-full"
+                            className="mb-4 p-2 outline-none border w-full"
                         ></textarea>
                         <button
                             onClick={handleAddOrUpdateNews}

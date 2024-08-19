@@ -24,6 +24,7 @@ import Deposits from './Deposits';
 import Orders from './Orders';
 import Divider from '@mui/material/Divider';
 import List from '@mui/material/List';
+import ContactList from './ContactList';
 
 const ADMIN_USER_ID = 'KtaLiUYI6SZmNVLEhU1Xe8N5npJ2'; // Replace with your actual admin user ID
 
@@ -89,18 +90,6 @@ const Dashboard = () => {
   const { currentUser, handleLogout } = useContext(UserContext);
   const navigate = useNavigate();
 
-  const toggleDrawer = () => {
-    setOpen(!open);
-  };
-
-  const onLogoutClick = async () => {
-    try {
-      await handleLogout();
-      navigate('/login'); // Redirect to login page
-    } catch (error) {
-      console.error('Logout error:', error);
-    }
-  };
 
   const isAdmin = currentUser?.uid === ADMIN_USER_ID;
 
@@ -156,23 +145,19 @@ const Dashboard = () => {
               </Grid>
               <Grid item xs={12}>
                 <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
-                  <Orders />
+                  <ContactList />
                 </Paper>
               </Grid>
-              {isAdmin && (
+              {/* {isAdmin && (
                 <Grid item xs={12} md={8} lg={12}>
                   <Paper sx={{ p: 2, mt: 4, display: 'flex', flexDirection: 'column', maxheight: 900 }}>
                     <NewsUpload />
                   </Paper>
                 </Grid>
-              )}
+              )} */}
             </Grid>
             <Copyright sx={{ pt: 4 }} />
-            <div className="flex items-center">
-              <Button variant='contained' color='secondary' onClick={onLogoutClick} className='p-3'>
-                Log Out
-              </Button>
-            </div>
+
           </Container>
         </Box>
       </Box>

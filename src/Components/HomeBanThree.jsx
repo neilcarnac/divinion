@@ -11,7 +11,8 @@ const HomeBanThree = () => {
                             <p>Professional Caregivers</p>
                         </div>
                         <div className="lg:w-1/2 w-full lg:text-base text-sm ">
-                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptate sint facilis officiis dolor nesciunt aliquid ab quaerat esse delectus pariatur dolores minima, quibusdam totam.</p>
+                            <p>Divinion's philosophy centers around the belief in steady returns and prudent risk management. The fund maintains exposure primarily in large-cap stocks, emphasizing those with higher index weightage and robust PSU stocks offering high dividend yields. This approach reflects a commitment to balancing returns with capital preservation.
+                            </p>
                         </div>
                         <Link to="/about">
 
