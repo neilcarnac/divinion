@@ -3,9 +3,10 @@ import { db } from '../Firebase/firebaseConfig';
 import { collection, query, where, getDocs } from 'firebase/firestore';
 import { UserContext } from '../../Context/UserContext';
 import { useNavigate } from 'react-router-dom';
+import { signOut, signInWithEmailAndPassword } from 'firebase/auth';
 
 const Chart = () => {
-  const { currentUser } = useContext(UserContext); // Get current user from context
+  const { currentUser, handleLogout } = useContext(UserContext);
   const [userEmail, setUserEmail] = useState('');
   const [companyName, setCompanyName] = useState('');
   const toggleDrawer = () => {

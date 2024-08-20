@@ -73,8 +73,8 @@ const AboutBanOne = () => {
                 <div className="flex flex-col sm:pl-8 sm:pr-8 mx-auto items-center gap-2">
                     <p className='text-sm font-medium'>ABOUT BLOCK</p>
                     <p className='text-4xl sm:text-xl text-center leading-tight font-semibold'>Empowering the world to design</p>
-                    <p className='sm:w-full lg:w-1/2 md:text-base lg:text-base sm:text-xs text-center text-[#999999] leading-tight'>
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias est praesentium necessitatibus totam veniam!
+                    <p className='w-full md:text-base lg:text-base sm:text-xs text-center text-[#999999] leading-tight'>
+                        Creating a whole new era of finance
                     </p>
                 </div>
                 <div className="flex lg:flex-row flex-wrap items-center mx-auto gap-4 m-8 justify-center">
