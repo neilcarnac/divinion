@@ -38,8 +38,15 @@ const HomBanOne = () => {
     };
 
     const modalTexts = [
-        "Divinion, a fusion of the words 'Divine' and 'Union,' embodies a profound concept at the heart of its identity. Established in October 2020, Divinion Advisory Services Pvt Ltd (DASL) was conceived to bring forth a divine union of expertise and insight in the realm of financial management.s",
-        "Appointed as the investment manager for the Divinion Dynamic Fund (DDF), DASL embarked on a journey to dynamically navigate the ever-evolving landscape of financial markets. The inception of DDF represents a commitment to agile and strategic fund management.",
+        "Divinion, a fusion of the words 'Divine' and 'Union', embodies a profound concept at the heart of it's identity. Established in October 2020, Divinion Advisory Services Private Limited was conceived to bring forth a divine union of expertise and insight in the realm of financial management.",
+        <>
+            Appointed as the investment manager by Divinion Alternative India Fund, for managing their funds, Divinion Advisory Services Private Limited embarked on a journey to dynamically navigate the ever-evolving landscape of financial markets.<br /><br />
+            Currently, the following two funds have been launched by Divinion Alternative India Fund for which Divinion Advisory Services Private Limited is the Investment Manager:
+            <br />1. Divinion Dynamic Fund – A close-ended fund launched in August 2022
+            <br />2. Divinion Dynamic Focused Investments Fund – An open-ended fund launched in June 2024
+        </>,
+
+
         "In December 2021, Divinion Alternative India Fund (DAIF) secured SEBI registration as a Category III Alternative Investment Fund (AIF). This milestone marked Divinion's foray into alternative investments, showcasing a dedication to diverse and sophisticated investment strategies.",
         "In collaboration with HDFC Bank, AZB & Partners, and Credentia Trusteeship, Divinion is fortified with the strength of reliable custodianship, legal acumen, and unwavering trust. Together, we forge a path towards financial excellence, guided by the principles of integrity, security, and legal soundness."
     ];

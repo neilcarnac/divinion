@@ -1,8 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { db } from '../Components/Firebase/firebaseConfig';
 import { collection, getDocs } from 'firebase/firestore';
 import NewsUpload from './dashboard/NewsUpload';
+import { UserContext } from '../Context/UserContext';
+
 const NewsBanTwo = () => {
+    const { isAdmin } = useContext(UserContext);
+
     const [newsItems, setNewsItems] = useState([]);
     const [currentSlide, setCurrentSlide] = useState(0);
     const [modalOpen, setModalOpen] = useState(false);
@@ -93,8 +97,10 @@ const NewsBanTwo = () => {
                     </div>
                 )}
             </div>
-            
-            <NewsUpload />
+            {isAdmin &&
+                <NewsUpload />
+
+            }
 
         </>
     );

@@ -80,10 +80,10 @@ const AboutBanOne = () => {
                 <div className="flex lg:flex-row flex-wrap items-center mx-auto gap-4 m-8 justify-center">
                     {bannerData && bannerData.length > 0 ? (
                         bannerData.map((item, index) => (
-                            <div key={index} className=' flex-col bg-[WHITE] items-center font-joe  cursor-pointer shadow-lg lg:w-1/4 w-3/4 p-6 rounded-xl transform transition-transform duration-500 hover:scale-105'>
+                            <div key={index} className=' flex-col bg-[WHITE] items-center   cursor-pointer shadow-lg lg:w-1/4 w-3/4 p-6 rounded-xl transform transition-transform duration-500 hover:scale-105'>
                                 <div className="flex flex-col gap-2">
                                     <p className='font-semibold text-base'>{item.title}</p>
-                                    <p className='leading-none text-sm'>{item.description}</p>
+                                    <p className='leading-tight text-sm'>{item.description}</p>
                                 </div>
                                 {isAdmin && (
                                     <div className="flex justify-end gap-2 mt-4">
