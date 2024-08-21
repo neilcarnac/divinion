@@ -129,10 +129,18 @@ const AboutBanOne = () => {
                         )}
                     </>
                 )}
-                <div className="flex flex-row items-center mx-auto gap-4 justify-center">
-                    <img src="hdfc_logo.png" className='w-1/4' alt="" />
-                    <img src="azb.png" className='w-1/4' alt="" />
-                    <img src="mcred.png" className='w-1/4' alt="" />
+                <div className='flex flex-col gap-4'>
+
+                    <div className="flex flex-row items-center mx-auto gap-8 justify-center">
+                        <img src="hdfc_logo.png" className="w-1/4" alt="" />
+                        <img src="azb.png" className="w-1/4" alt="" />
+                        <img src="mcred.png" className="w-1/4 hidden sm:block" alt="" />
+                    </div>
+
+                    <div className="flex flex-row items-center mx-auto gap-8 justify-center">
+                        <img src="validus.png" className="w-1/5" alt="" />
+                    </div>
+
                 </div>
             </div>
         </div>
