@@ -34,7 +34,7 @@ const SubscribeForm = () => {
         <div className="relative w-full h-screen bg-cover bg-center" style={{ backgroundImage: 'url("hbgg.svg")' }}>
             <div className="flex items-center justify-center w-full h-full absolute top-0 left-0 bg-black bg-opacity-50">
                 <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md mx-4 sm:mx-auto">
-                    <h2 className="text-2xl font-bold mb-4 text-center text-gray-800">Please Reach Out to Us</h2>
+                    <h2 className="text-2xl font-bold mb-4 text-center text-gray-800">For any Queries<br /> Please Reach out to us</h2>
                     <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                         <label htmlFor="email" className="block text-sm font-medium text-gray-700">
                             Email

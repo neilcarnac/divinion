@@ -6,9 +6,13 @@ function Navbar() {
   const [show, setShow] = useState(false);
   const location = useLocation();
   const { isAdmin } = useContext(UserContext); // Get isAdmin from context
+  const [servicesDropdown, setServicesDropdown] = useState(false); // State for services dropdown
 
   function onNavClick() {
     setShow(!show);
+  }
+  function toggleServicesDropdown() {
+    setServicesDropdown(!servicesDropdown);
   }
 
   // Function to determine if the link is active
@@ -87,6 +91,7 @@ function Navbar() {
                   Contact
                 </Link>
               </li>
+
               {isAdmin && (
                 <li>
                   <Link
@@ -107,6 +112,34 @@ function Navbar() {
                   </Link>
                 </li>
               )}
+              <li className="relative">
+                <button
+                  onClick={toggleServicesDropdown}
+                  className={`block py-2 px-3 rounded md:p-0 ${isActive('/services') ? 'text-dark-green' : 'text-gray-900 hover:text-dark-green'}`}
+                >
+                  Services
+                </button>
+                {servicesDropdown && (
+                  <ul className="absolute top-full left-0 mt-1 w-36 bg-white shadow-lg rounded-md z-10">
+                    <li>
+                      <Link
+                        to="/services-form"
+                        className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                      >
+                        Form
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        to="/services-privacy-policy"
+                        className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                      >
+                        Privacy Policy
+                      </Link>
+                    </li>
+                  </ul>
+                )}
+              </li>
             </ul>
           </div>
         </div>

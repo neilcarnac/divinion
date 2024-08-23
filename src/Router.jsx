@@ -11,6 +11,8 @@ import About from './Pages/About';
 import Subscribe from './Pages/Subscribe';
 import Careers from './Pages/Careers';
 import Contact from './Pages/Contact';
+import ServicesForms from './Pages/ServicesForms';
+import ServicesPrivacyPolicy from './Pages/ServicesPrivacyPolicy';
 
 const AppRouter = () => {
     const { currentUser } = useContext(UserContext); // Access current user from context
@@ -26,6 +28,9 @@ const AppRouter = () => {
                 <Route path="/login/" element={<Login />} />
                 <Route path="/blog/" element={<News />} />
                 <Route path="/contact" element={<Subscribe />} />
+                <Route path="/services-form" element={<ServicesForms />} />
+                <Route path="/services-privacy-policy" element={<ServicesPrivacyPolicy />} />
+
                 {/* <Route path="/careers/" element={<Careers />} /> */}
                 {/* <Route path="/contact/" element={<Contact />} /> */}
 

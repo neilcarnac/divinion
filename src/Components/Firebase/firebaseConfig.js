@@ -1,15 +1,12 @@
-// Import the functions you need from the SDKs you need
+// firebase.js
+
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import { getStorage } from 'firebase/storage';
 
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  // apiKey: process.env.local.REACT_APP_FIREBASE_KEY,
   apiKey: "AIzaSyDxZDItqR75XkxUCe3XfxZ023P1r7OikIA",
   authDomain: "divinion.firebaseapp.com",
   projectId: "divinion",
@@ -25,6 +22,4 @@ const db = getFirestore(app);
 const auth = getAuth(app);
 const storage = getStorage(app);
 
-
-
-export { db, auth, storage } ;
+export { db, auth, storage };

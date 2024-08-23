@@ -8,15 +8,15 @@ const AboutBanTwo = () => {
                 <div className="flex flex-col lg:flex-row lg:justify-between gap-10 lg:gap-16">
                     <img src="1.jpg" className='lg:w-[600px] rounded-xl w-full pt-8 pr-8' alt="" />
                     <div className="flex flex-col my-auto items-start gap-4">
-                        <p className='text-[#999999]'>01</p>
-                        <p className='text-2xl'>Corporate Social Responsibility at Divinion:</p>
+                        {/* <p className='text-[#999999]'>01</p> */}
+                        <p className='text-2xl'>Corporate Social Responsibility at Divinion -<br /> Art of Being Responsible and Rewarding</p>
                         <p className='w-4/5 text-gray-950 font-thin leading-tight'>
                             At Divinion, we believe in making a positive impact beyond financial markets. Committed to social responsibility, we allocate 25% of our profits towards Corporate Social Responsibility (CSR) activities. This dedicated initiative reflects our ethos of contributing to the well-being of the communities we operate in. Through our CSR endeavors, we aim to create lasting value and contribute meaningfully to societal progress.
                         </p>
-                        <p className='font-normal underline'>Explore Services {"-->"}</p>
+                        {/* <p className='font-normal underline'>Explore Services {"-->"}</p> */}
                     </div>
                 </div>
-                <div className="flex flex-col lg:flex-row-reverse lg:justify-between w-full ">
+                {/* <div className="flex flex-col lg:flex-row-reverse lg:justify-between w-full ">
                     <img src="abb.svg" className='lg:w-[600px] rounded-xl w-full pt-8 pr-8' alt="" />
                     <div className="flex flex-col my-auto items-start gap-4">
                         <p className='text-[#999999]'>02</p>
@@ -29,7 +29,7 @@ const AboutBanTwo = () => {
                         </a>
                         <p className='font-normal underline'>Explore Services {"-->"}</p>
                     </div>
-                </div>
+                </div> */}
             </div>
         </>
     );

@@ -54,9 +54,9 @@ const HomBanOne = () => {
     return (
         <div className="relative bg-cover z-20 flex flex-col pb-4 sm:pb-10 md:p-8 bg-center w-full h-[88vh] my-auto mt-1" style={{ backgroundImage: "url('/hbgg.svg')" }}>
             <div className="flex text-white flex-col gap-10 sm:gap-4 my-auto lg:pl-56 md:pl-20 pl-10 text-left">
-                <div className="flex flex-col font-joe font-bold tracking-wider lg:text-5xl md:text-5xl text-2xl">
-                    <p>Meaningful investments in</p>
-                    <p>Main Street businesses</p>
+                <div className="flex flex-col font-joe font-bold tracking-wider lg:text-[2.6rem] md:text-4xl text-2xl">
+                    <p>Your Partner in Wealth Creation,</p>
+                    <p>Investors Interest Above All</p>
                 </div>
                 <div className="flex flex-col items-start text-left">
                     <ul className="list-disc pl-5">
