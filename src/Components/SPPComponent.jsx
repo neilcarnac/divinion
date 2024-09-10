@@ -17,7 +17,8 @@ const policies = [
 
 const SPPComponent = () => {
     return (
-        <div className="flex flex-col w-full mx-auto">
+        <div className="flex flex-col w-full mx-auto ">
+            <p className='font-joe font-semibold text-2xl mt-10 mb-10 lg:mt-20 lg:text-4xl text-center'>Privacy Policies</p>
             <div className="flex flex-col gap-5">
 
                 {policies.map((policy, index) => (
