@@ -14,7 +14,9 @@ const ContactMe = () => {
                         <div className="flex flex-col  items-center text-center">
                             <FaMapLocationDot className=" w-20 h-20" />
                             <p className="text-2xl font-semibold">Address</p>
-                            <p className="">1408/ Maker Chambers V, Nariman Point, Churchgate, 400021</p>
+                            <p className="">1408, Maker Chambers V, Nariman Point,
+                                Mumbai - 400021
+                            </p>
                         </div>
                         <div className="flex flex-col items-center text-center">
                             <IoMdMail className="text-white w-20 h-20" />
