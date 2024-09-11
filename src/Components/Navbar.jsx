@@ -102,7 +102,7 @@ function Navbar() {
                   </Link>
                 </li>
               )}
-              {!isAdmin && (
+              {/* {!isAdmin && (
                 <li>
                   <Link
                     to="/login"
@@ -111,7 +111,7 @@ function Navbar() {
                     Login
                   </Link>
                 </li>
-              )}
+              )} */}
               <li className="relative">
                 <button
                   onClick={toggleServicesDropdown}
@@ -134,7 +134,15 @@ function Navbar() {
                         to="/services-privacy-policy"
                         className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
                       >
-                        Privacy Policy
+                        Distributors Corner
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        to="/services-privacy-policy"
+                        className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                      >
+                        Policies
                       </Link>
                     </li>
                   </ul>

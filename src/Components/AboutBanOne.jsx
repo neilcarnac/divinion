@@ -164,12 +164,12 @@ const AboutBanOne = () => {
                             </div>
                             <div className="flex flex-col items-center justify-center font-semibold">
                                 <img src="psgs.jpeg" className="w-[200px]" alt="" />
-                                <p className='mt-[-60px]'>Registrar & Transfer Agents</p>
-                                <p className='text-center'>Validus Fintech Services Pvt. Ltd.</p>
+                                <p className='mt-[-60px]'>Tax Consultant</p>
+                                <p className='text-center'>PSGS & CO LLP</p>
                             </div>
                             <div className="flex flex-col items-center justify-center font-semibold">
                                 <img src="hdfc_logo.png" className="w-[200px]" alt="" />
-                                <p className='mt-[-40px]'>Cusotian & Fund Accountants</p>
+                                <p className='mt-[-40px]'>Custodian & Fund Accountants</p>
                                 <p className='text-center'>HDFC Bank Limited</p>
                             </div>
                             <div className="flex flex-col items-center justify-center ">
