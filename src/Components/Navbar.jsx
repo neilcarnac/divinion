@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { UserContext } from '../Context/UserContext'; // Adjust the path as necessary
 
@@ -7,6 +7,23 @@ function Navbar() {
   const location = useLocation();
   const { isAdmin } = useContext(UserContext); // Get isAdmin from context
   const [servicesDropdown, setServicesDropdown] = useState(false); // State for services dropdown
+  const [visible, setVisible] = useState(true); // State for navbar visibility
+  const [prevScrollPos, setPrevScrollPos] = useState(window.pageYOffset); // Track the scroll position
+
+  // Toggle navbar visibility based on scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollPos = window.pageYOffset;
+      const isScrollingUp = prevScrollPos > currentScrollPos;
+      setVisible(isScrollingUp || currentScrollPos < 10);
+      setPrevScrollPos(currentScrollPos);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    // Cleanup the event listener when the component is unmounted
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [prevScrollPos]);
 
   function onNavClick() {
     setShow(!show);
@@ -20,7 +37,10 @@ function Navbar() {
 
   return (
     <>
-      <nav className="z-30 top-0 p-2 sticky bg-white/50">
+      <nav
+        className={`z-30 top-0 p-2 sticky bg-white/50 transition-transform duration-300 ${visible ? 'translate-y-0' : '-translate-y-full'
+          }`}
+      >
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
           {!show && (
             <>
@@ -102,16 +122,6 @@ function Navbar() {
                   </Link>
                 </li>
               )}
-              {/* {!isAdmin && (
-                <li>
-                  <Link
-                    to="/login"
-                    className={`block py-2 px-3 rounded md:p-0 ${isActive('/login') ? 'text-dark-green' : 'text-gray-900 hover:text-dark-green'}`}
-                  >
-                    Login
-                  </Link>
-                </li>
-              )} */}
               <li className="relative">
                 <button
                   onClick={toggleServicesDropdown}
@@ -152,13 +162,15 @@ function Navbar() {
           </div>
         </div>
       </nav>
+
       {show && (
         <div className="flex flex-col items-center pl-10 pr-10 h-[92vh] w-full bg-white gap-24">
+          {/* Mobile menu */}
           <div className="flex flex-row items-center gap-20">
             <button onClick={onNavClick}>
               <p className="text-xl text-[#7B61FF]">X</p>
             </button>
-            <a href="https://.com/" className="flex items-center space-x-3 rtl:space-x-reverse">
+            <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
               <img src="logo.svg" className="h-10" alt="Logo" />
             </a>
             <svg
@@ -188,12 +200,10 @@ function Navbar() {
             </button>
           </div>
           <div className="flex flex-col text-gray-500">
-            <Link to="/login">
-              <p>Login as a Customer</p>
+            <Link to="/privacy-policy" className="mb-4">
+              Terms and Conditions
             </Link>
-          </div>
-          <div>
-            <p onClick={onNavClick}>--------------------</p>
+            <Link to="/privacy-policy">Privacy Policies</Link>
           </div>
         </div>
       )}

@@ -136,6 +136,12 @@ const AboutBanOne = () => {
                     <div className="mx-auto flex  flex-col p-10">
                         <img src="ICEBEARG.jpg" className='hover:cursor-pointer p-5 hover:p-0 transition: duration-500' alt="" />
                     </div>
+                    <div className="text-center text-lg">
+                        <p>       SEBI AIF Registration No.: IN / AIF3 / 21-22 / 0968
+                        </p>
+                        <p>                            Category of AIF: Category III
+                        </p>
+                    </div>
                     <div className='flex flex-col gap-4'>
 
                         <div className="flex flex-row items-center mx-auto gap-14 justify-center">
