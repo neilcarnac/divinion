@@ -19,8 +19,8 @@ function Footer() {
             </div>
             <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
               <div>
-                <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Navigation</h2>
-                <ul className="text-gray-500 flex flex-col gap-3 dark:text-gray-400 font-medium">
+                <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase">Navigation</h2>
+                <ul className="text-gray-500 flex flex-col gap-3  font-medium">
                   <li className="">
                     <a href="/adminlogin" className="hover:underline">Login</a>
                   </li>
@@ -48,8 +48,8 @@ function Footer() {
                 </ul>
               </div> */}
               <div>
-                <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Legal</h2>
-                <ul className="text-gray-500 flex flex-col gap-3 dark:text-gray-400 font-medium">
+                <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase ">Legal</h2>
+                <ul className="text-gray-500 flex flex-col gap-3  font-medium">
                   <li className="">
                     <a href="/services-privacy-policy" className="hover:underline">Privacy Policy</a>
                   </li>
@@ -60,9 +60,9 @@ function Footer() {
               </div>
             </div>
           </div>
-          <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+          <hr className="my-6 border-gray-200 sm:mx-auto lg:my-8" />
           <div className="sm:flex sm:items-center sm:justify-between">
-            <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2024 <a href="https://flowbite.com/" className="hover:underline">Divinion</a>. All Rights Reserved.
+            <span className="text-sm text-gray-500 sm:text-center">© 2024 <a href="https://www.divinion-investments.com/" className="hover:underline">Divinion</a>. All Rights Reserved.
             </span>
             <div className="flex mt-4 sm:justify-center sm:mt-0">
               {/* <a href="#" className="text-gray-500 hover:text-gray-900 dark:hover:text-white">
