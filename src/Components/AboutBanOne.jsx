@@ -133,10 +133,10 @@ const AboutBanOne = () => {
                             )}
                         </>
                     )}
-                    <div className="mx-auto flex  flex-col p-10">
+                    <div className="mx-auto flex  flex-col p-4 lg:p-10">
                         <img src="ICEBEARG.jpg" className='hover:cursor-pointer p-5 hover:p-0 transition: duration-500' alt="" />
                     </div>
-                    <div className="text-center text-xl">
+                    <div className="text-center text-sm lg:text-xl">
                         <p>       SEBI AIF Registration No.: IN / AIF3 / 21-22 / 0968
                         </p>
                         <p>                            Category of AIF: Category III
@@ -144,7 +144,7 @@ const AboutBanOne = () => {
                     </div>
                     <div className='flex flex-col gap-4'>
 
-                        <div className="flex flex-row items-center mx-auto gap-14 justify-center">
+                        <div className="flex lg:flex-row flex-col items-center mx-auto lg:gap-14 gap-5 justify-center">
                             <div className="flex flex-col items-center font-semibold">
                                 <img src="hdfc_logo.png" className="w-[200px]" alt="" />
                                 <p className='mt-[-40px]'>Bankers</p>
@@ -156,21 +156,21 @@ const AboutBanOne = () => {
                                 <p className='text-center'>AZB & Partners</p>
                             </div>
                             <div className="flex flex-col items-center justify-center font-semibold">
-                                <img src="mcred.png" className="w-[200px] hidden sm:block" alt="" />
+                                <img src="mcred.png" className="w-[200px] sm:block" alt="" />
                                 <p className='mt-[-50px]'>Trusteeship Services</p>
                                 <p className='text-center'>MITCON Credentia</p>
                             </div>
                         </div>
 
-                        <div className="flex flex-row items-center mx-auto gap-14 justify-center">
-                            <div className="flex flex-col items-center justify-center font-semibold">
+                        <div className="flex lg:flex-row flex-col text-center items-center mx-auto gap-14 justify-center">
+                            <div className="flex flex-col text-sm lg:text-base  items-center justify-center font-semibold">
                                 <img src="validus.png" className="w-[200px]" alt="" />
                                 <p className='mt-[14px]'>Registrar & Transfer Agents</p>
                                 <p className='text-center'>Validus Fintech Services Pvt. Ltd.</p>
                             </div>
                             <div className="flex flex-col items-center justify-center font-semibold">
                                 <img src="psgs.jpeg" className="w-[200px]" alt="" />
-                                <p className='mt-[-60px]'>Tax Consultant</p>
+                                <p className='lg:mt-[-60px] mt-[-20px]'>Tax Consultant</p>
                                 <p className='text-center'>PSGS & CO LLP</p>
                             </div>
                             <div className="flex flex-col items-center justify-center font-semibold">
