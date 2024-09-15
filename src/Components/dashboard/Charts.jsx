@@ -90,7 +90,7 @@ const Chart = () => {
           <button className="bg-green-700 w-64 text-center hover:bg-green-700/80 transition: duration-300 text-white text-base p-3 rounded-md" onClick={onHomeClick} >
             Check Home Page to add Info
           </button>
-          <button className="bg-green-700 w-64 text-center hover:bg-green-700/80 transition: duration-300 text-white text-base p-3 rounded-md" onClick={onHomeClick} >
+          <button className="bg-green-700 w-64 text-center hover:bg-green-700/80 transition: duration-300 text-white text-base p-3 rounded-md" onClick={onNewsClick} >
             Check News Page to add Info
           </button>
 
