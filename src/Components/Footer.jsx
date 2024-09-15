@@ -22,7 +22,7 @@ function Footer() {
                 <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Navigation</h2>
                 <ul className="text-gray-500 flex flex-col gap-3 dark:text-gray-400 font-medium">
                   <li className="">
-                    <a href="/adminLogin" className="hover:underline">Login</a>
+                    <a href="/adminlogin" className="hover:underline">Login</a>
                   </li>
                   <li className="">
                     <a href="/" className="hover:underline">Home</a>
