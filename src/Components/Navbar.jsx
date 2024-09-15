@@ -188,7 +188,7 @@ function Navbar() {
               />
             </svg>
           </div>
-          <div className="flex flex-col items-center gap-8 font-joe text-2xl font-semibold">
+          <div className="flex flex-col items-center gap-4 font-joe text-2xl font-semibold">
             <button className="bg-transparent outline-none hover:border-2 pl-20 pr-20 pt-2 pb-2 hover:border-black">
               <Link to="/">Home</Link>
             </button>
@@ -198,8 +198,14 @@ function Navbar() {
             <button className="bg-transparent outline-none hover:border-2 pl-20 pr-20 pt-2 pb-2 hover:border-black">
               <Link to="/blog">News</Link>
             </button>
+            <button className="bg-transparent outline-none hover:border-2 pl-20 pr-20 pt-2 pb-2 hover:border-black">
+              <Link to="/contact">Contact</Link>
+            </button>
+            <button className="bg-transparent outline-none hover:border-2 pl-20 pr-20 pt-2 pb-2 hover:border-black">
+              <Link to="/services-privacy-policy">Services</Link>
+            </button>
           </div>
-          <div className="flex flex-col text-gray-500">
+          <div className="flex flex-col items-center text-gray-500">
             <Link to="/privacy-policy" className="mb-4">
               Terms and Conditions
             </Link>
