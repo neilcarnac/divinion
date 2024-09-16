@@ -8,17 +8,18 @@ const NewsBanOne = () => {
                     <div className="flex flex-col gap-4 lg:gap-2">
                         <div className="flex text-lg flex-row  justify-between">
                             <div className="flex flex-col">
-                                <p>News Today For Divinion</p>
+                                <p className='text-xl lg:text-3xl'>Divinion Insights</p>
                                 <div className="h-[2px] bg-red-500"></div>
                             </div>
                         </div>
-                        <p className='text-4xl font-semibold'>Lorem ipsum dolor sit.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque incidunt fugit delectus iusto quae, perferendis voluptatibus doloribus beatae eveniet numquam facere? Iste, amet tenetur!</p>
+                        {/* <p className='text-4xl font-semibold'>Lorem ipsum dolor sit.</p> */}
+                        <p>Explore our latest market updates and in-depth analysis from our investment team. We provide critical insights on global market trends, strategic decisions, and how macroeconomic factors influence the financial landscape. Stay connected with key developments shaping markets and understand how we navigate changing conditions to identify opportunities. Please note, these views reflect our perspective and are not final recommendations; they should be considered as part of a broader analysis.
+                        </p>
                     </div>
-                    <div className="flex flex-row-reverse font-semibold">
+                    {/* <div className="flex flex-row-reverse font-semibold">
                         <p>Date 22/07/24</p>
 
-                    </div>
+                    </div> */}
                 </div>
             </div>
 
