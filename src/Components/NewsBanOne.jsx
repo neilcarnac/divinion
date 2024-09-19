@@ -10,7 +10,7 @@ const NewsBanOne = () => {
                     className="absolute top-0 left-0 w-full h-full object-cover transform scale-x-[-1] z-[-1]"
                 />
                 
-                <div className="flex font-joe flex-col justify-between m-10 p-10 rounded-lg lg:w-1/3 w-2/3 my-auto h-[76-80vh]"
+                <div className="flex font-joe flex-col justify-between m-10 p-10 rounded-lg lg:w-1/3 w-2/3 my-auto h-[76vh]"
                     style={{
                         background: 'rgba(255, 255, 255, 0.1)', 
                         backdropFilter: 'blur(10px)',           
