@@ -4,17 +4,18 @@ import Modal from './Modal'
 
 const boardMembers = [
     {
-        name: "Mr. T. P. Ostwal",
-        position: "Director",
-        image: "TPO_PARTNER-.png",
-        description: "T. P. Ostwal is the Managing Partner of T. P. Ostwal & Associates LLP and a founding Partner of DTS & Associates, both Chartered Accountants firms based in Mumbai. With over four decades of experience, he specializes in advising national and multinational clients on various aspects including direct tax, personal tax, transfer pricing, mergers, and more. He has been recognized globally, ranking 11th among the top 50 Tax Professionals by Tax-Business magazine in 2006-07. Under his leadership, M/s. T. P. Ostwal & Associates earned recognition as one of India's Best Tier 2 Firms and a top Transfer Pricing Advisor in India."
-    },
-    {
         name: "Mr. Seturaman Mahalingam",
         position: "Director",
         image: "Seturaman_Mahalingam-Pic-.png",
         description: "Mr Mahalingam started his professional career with Tata Consultancy Services in 1970. In his 42-year career with TCS, Mr Mahalingam has been involved in myriad aspects of the Company’s operations and growth, before being appointed as the Chief Financial Officer of the Company in February 2003 and as Executive Director in August 2007. He retired from TCS in February 2013. Mr Mahalingam has played a key role in helping TCS become a $ 11.6 billion global company with over 275,000 employees, at the time he retired."
     },
+    {
+        name: "Mr. T. P. Ostwal",
+        position: "Director",
+        image: "TPO_PARTNER-.png",
+        description: "T. P. Ostwal is the Managing Partner of T. P. Ostwal & Associates LLP and a founding Partner of DTS & Associates, both Chartered Accountants firms based in Mumbai. With over four decades of experience, he specializes in advising national and multinational clients on various aspects including direct tax, personal tax, transfer pricing, mergers, and more. He has been recognized globally, ranking 11th among the top 50 Tax Professionals by Tax-Business magazine in 2006-07. Under his leadership, M/s. T. P. Ostwal & Associates earned recognition as one of India's Best Tier 2 Firms and a top Transfer Pricing Advisor in India."
+    },
+
     {
         name: "Mr. Sambhrant Sharma",
         position: "Director",
@@ -104,7 +105,7 @@ const AboutBanThree = () => {
                             <>
                                 <img
                                     src={person.image}
-                                    className="rounded-xl shadow-xl w-[300px] h-[350px] cursor-pointer"
+                                    className="rounded-xl shadow-xl w-[300px] h-[300px] cursor-pointer"
                                     alt={person.name}
                                 />
                                 <p className="mt-4 font-semibold">{person.name}</p>

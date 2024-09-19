@@ -3,7 +3,7 @@ import React from 'react'
 const NewsBanOne = () => {
     return (
         <>
-            <div className="relative bg-cover z-20 flex flex-col pb-4 sm:pb-10 md:p-8 bg-center w-full h-[76vh] my-auto mt-1" style={{ backgroundImage: "url('/coverfooto.jpg')" }}>
+            <div className="relative bg-cover z-20 flex flex-col pb-4 sm:pb-10 md:p-8 bg-center w-full h-[85vh] my-auto mt-1" style={{ backgroundImage: "url('/nbb.avif')" }}>
                 <div className="flex font-joe flex-col justify-between m-10 bg-gray-300/60 rounded-lg p-10 lg:w-1/3 w-2/3  my-auto lg:h-full h-2/3">
                     <div className="flex flex-col gap-4 lg:gap-2">
                         <div className="flex text-lg flex-row  justify-between">
