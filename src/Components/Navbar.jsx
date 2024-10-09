@@ -1,6 +1,6 @@
-import React, { useState, useContext, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { UserContext } from '../Context/UserContext'; // Adjust the path as necessary
+import React, { useState, useContext, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { UserContext } from "../Context/UserContext"; // Adjust the path as necessary
 
 function Navbar() {
   const [show, setShow] = useState(false);
@@ -19,10 +19,10 @@ function Navbar() {
       setPrevScrollPos(currentScrollPos);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
     // Cleanup the event listener when the component is unmounted
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [prevScrollPos]);
 
   function onNavClick() {
@@ -34,18 +34,21 @@ function Navbar() {
 
   // Function to determine if the link is active
   const isActive = (path) => location.pathname === path;
-
+  // ${visible ? 'translate-y-0' : '-translate-y-full'
+  // }
   return (
     <>
       <nav
-        className={`z-30 top-0 p-2 sticky bg-white/50 transition-transform duration-300 ${visible ? 'translate-y-0' : '-translate-y-full'
-          }`}
+        className={`z-30 top-0 p-2 sticky bg-white transition-transform duration-300 `}
       >
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
           {!show && (
             <>
               <div className="flex items-center justify-center">
-                <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
+                <a
+                  href="/"
+                  className="flex items-center space-x-3 rtl:space-x-reverse"
+                >
                   <img src="logo.svg" className="h-12" alt="Logo" />
                 </a>
 
@@ -82,7 +85,11 @@ function Navbar() {
               <li>
                 <Link
                   to="/"
-                  className={`block py-2 px-3 rounded md:p-0 ${isActive('/') ? 'text-dark-green' : 'text-gray-900 hover:text-dark-green'}`}
+                  className={`block py-2 px-3 rounded md:p-0 ${
+                    isActive("/")
+                      ? "text-dark-green"
+                      : "text-gray-900 hover:text-dark-green"
+                  }`}
                 >
                   Home
                 </Link>
@@ -90,15 +97,35 @@ function Navbar() {
               <li>
                 <Link
                   to="/about"
-                  className={`block py-2 px-3 rounded md:p-0 ${isActive('/about') ? 'text-dark-green' : 'text-gray-900 hover:text-dark-green'}`}
+                  className={`block py-2 px-3 rounded md:p-0 ${
+                    isActive("/about")
+                      ? "text-dark-green"
+                      : "text-gray-900 hover:text-dark-green"
+                  }`}
                 >
-                  About
+                  Our Approach
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/team"
+                  className={`block py-2 px-3 rounded md:p-0 ${
+                    isActive("/about")
+                      ? "text-dark-green"
+                      : "text-gray-900 hover:text-dark-green"
+                  }`}
+                >
+                  Team
                 </Link>
               </li>
               <li>
                 <Link
                   to="/blog"
-                  className={`block py-2 px-3 rounded md:p-0 ${isActive('/blog') ? 'text-dark-green' : 'text-gray-900 hover:text-dark-green'}`}
+                  className={`block py-2 px-3 rounded md:p-0 ${
+                    isActive("/blog")
+                      ? "text-dark-green"
+                      : "text-gray-900 hover:text-dark-green"
+                  }`}
                 >
                   News
                 </Link>
@@ -106,7 +133,11 @@ function Navbar() {
               <li>
                 <Link
                   to="/contact"
-                  className={`block py-2 px-3 rounded md:p-0 ${isActive('/contact') ? 'text-dark-green' : 'text-gray-900 hover:text-dark-green'}`}
+                  className={`block py-2 px-3 rounded md:p-0 ${
+                    isActive("/contact")
+                      ? "text-dark-green"
+                      : "text-gray-900 hover:text-dark-green"
+                  }`}
                 >
                   Contact
                 </Link>
@@ -116,7 +147,11 @@ function Navbar() {
                 <li>
                   <Link
                     to="/admin"
-                    className={`block py-2 px-3 rounded md:p-0 ${isActive('/admin') ? 'text-dark-green' : 'text-gray-900 hover:text-dark-green'}`}
+                    className={`block py-2 px-3 rounded md:p-0 ${
+                      isActive("/admin")
+                        ? "text-dark-green"
+                        : "text-gray-900 hover:text-dark-green"
+                    }`}
                   >
                     Dashboard
                   </Link>
@@ -125,7 +160,11 @@ function Navbar() {
               <li className="relative">
                 <button
                   onClick={toggleServicesDropdown}
-                  className={`block py-2 px-3 rounded md:p-0 ${isActive('/services') ? 'text-dark-green' : 'text-gray-900 hover:text-dark-green'}`}
+                  className={`block py-2 px-3 rounded md:p-0 ${
+                    isActive("/services")
+                      ? "text-dark-green"
+                      : "text-gray-900 hover:text-dark-green"
+                  }`}
                 >
                   Services
                 </button>
@@ -170,7 +209,10 @@ function Navbar() {
             <button onClick={onNavClick}>
               <p className="text-xl text-[#7B61FF]">X</p>
             </button>
-            <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
+            <a
+              href="/"
+              className="flex items-center space-x-3 rtl:space-x-reverse"
+            >
               <img src="logo.svg" className="h-10" alt="Logo" />
             </a>
             <svg

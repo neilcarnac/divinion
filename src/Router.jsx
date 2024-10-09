@@ -13,6 +13,7 @@ import Careers from './Pages/Careers';
 import Contact from './Pages/Contact';
 import ServicesForms from './Pages/ServicesForms';
 import ServicesPrivacyPolicy from './Pages/ServicesPrivacyPolicy';
+import Team from './Pages/Team';
 
 const AppRouter = () => {
     const { currentUser } = useContext(UserContext); // Access current user from context
@@ -24,6 +25,8 @@ const AppRouter = () => {
             <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/about/" element={<About />} />
+                <Route path="/team/" element={<Team />} />
+
                 <Route path="/admin/" element={<Admin />} />
                 <Route path="/login/" element={<Login />} />
                 <Route path="/blog/" element={<News />} />

@@ -1,9 +1,15 @@
-import React from 'react'
+import React from "react";
 
 const NewsBanOne = () => {
-    return (
-        <>
-            <div className="relative bg-cover z-20 flex flex-col pb-4 sm:pb-10 md:p-8 w-full h-[85vh] my-auto mt-1">
+  return (
+    <>
+      <div className="flex flex-col gap-5">
+        <p className="hover:text-5xl transition: duration-500 hover:cursor-pointer text-3xl text-center mt-10">
+          News{" "}
+        </p>
+        <p className="text-3xl text-center">Coming Soon</p>
+      </div>
+      {/* <div className="relative bg-cover z-20 flex flex-col pb-4 sm:pb-10 md:p-8 w-full h-[85vh] my-auto mt-1">
                 <img
                     src="/nbb.avif"
                     alt="Background"
@@ -30,9 +36,9 @@ const NewsBanOne = () => {
                         </p>
                     </div>
                 </div>
-            </div>
-        </>
-    )
-}
+            </div> */}
+    </>
+  );
+};
 
-export default NewsBanOne
+export default NewsBanOne;

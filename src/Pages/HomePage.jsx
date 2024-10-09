@@ -14,7 +14,7 @@ const HomePage = () => {
 
       <HomBanOne />
       <HomBanTwo />
-      <HomeBanThree />
+      {/* <HomeBanThree /> */}
       <Footer />
 
       {/* <BannerOne />
