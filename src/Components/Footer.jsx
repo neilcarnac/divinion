@@ -1,40 +1,53 @@
 import { Button } from "@material-tailwind/react";
-import { Input } from '@mui/material'
-import React from 'react'
+import { Input } from "@mui/material";
+import React from "react";
 import { Link } from "react-router-dom";
 
 function Footer() {
   return (
     <>
-
-
       <footer className=" w-full bottom-0">
         <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
           <div className="md:flex md:justify-between">
             <div className="mb-6 md:mb-0">
-              <div className='flex flex-col gap-4 '>
+              <div className="flex flex-col gap-4 ">
                 <img src="logo.svg" alt="" />
-
+                <div className="text-sm">
+                  <p> SEBI AIF Registration No.: IN / AIF3 / 21-22 / 0968</p>
+                  <p> Category of AIF: Category III</p>
+                </div>
               </div>
             </div>
             <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
               <div>
-                <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase">Navigation</h2>
+                <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase">
+                  Navigation
+                </h2>
                 <ul className="text-gray-500 flex flex-col gap-3  font-medium">
                   <li className="">
-                    <a href="/adminlogin" className="hover:underline">Login</a>
+                    <a href="/adminlogin" className="hover:underline">
+                      Login
+                    </a>
                   </li>
                   <li className="">
-                    <a href="/" className="hover:underline">Home</a>
+                    <a href="/" className="hover:underline">
+                      Home
+                    </a>
                   </li>
                   <li>
-                    <a href="/about" className="hover:underline">About</a>
+                    <a href="/about" className="hover:underline">
+                      About
+                    </a>
                   </li>
                   <li>
-                    <a href="/blog" className="hover:underline">News</a>
+                    <a href="/blog" className="hover:underline">
+                      News
+                    </a>
                   </li>
                   <li>
-                    <a href="/contact" className="hover:underline">Contact</a>
+                    <a href="/contact" className="hover:underline">
+                      Contact
+                    </a>
                   </li>
                 </ul>
               </div>
@@ -48,13 +61,25 @@ function Footer() {
                 </ul>
               </div> */}
               <div>
-                <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase ">Legal</h2>
+                <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase ">
+                  Legal
+                </h2>
                 <ul className="text-gray-500 flex flex-col gap-3  font-medium">
                   <li className="">
-                    <a href="/services-privacy-policy" className="hover:underline">Privacy Policy</a>
+                    <a
+                      href="/services-privacy-policy"
+                      className="hover:underline"
+                    >
+                      Privacy Policy
+                    </a>
                   </li>
                   <li>
-                    <a href="/services-privacy-policy" className="hover:underline">Terms &amp; Conditions</a>
+                    <a
+                      href="/services-privacy-policy"
+                      className="hover:underline"
+                    >
+                      Terms &amp; Conditions
+                    </a>
                   </li>
                 </ul>
               </div>
@@ -62,7 +87,15 @@ function Footer() {
           </div>
           <hr className="my-6 border-gray-200 sm:mx-auto lg:my-8" />
           <div className="sm:flex sm:items-center sm:justify-between">
-            <span className="text-sm text-gray-500 sm:text-center">© 2024 <a href="https://www.divinion-investments.com/" className="hover:underline">Divinion</a>. All Rights Reserved.
+            <span className="text-sm text-gray-500 sm:text-center">
+              © 2024{" "}
+              <a
+                href="https://www.divinion-investments.com/"
+                className="hover:underline"
+              >
+                Divinion
+              </a>
+              . All Rights Reserved.
             </span>
             <div className="flex mt-4 sm:justify-center sm:mt-0">
               {/* <a href="#" className="text-gray-500 hover:text-gray-900 dark:hover:text-white">
@@ -77,14 +110,12 @@ function Footer() {
                 </svg>
                 <span className="sr-only">Discord community</span>
               </a> */}
-
             </div>
           </div>
         </div>
-      </footer >
-
+      </footer>
     </>
-  )
+  );
 }
 
-export default Footer
+export default Footer;

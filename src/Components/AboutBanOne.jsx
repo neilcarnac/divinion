@@ -160,10 +160,7 @@ const AboutBanOne = () => {
               alt=""
             />
           </div>
-          {/* <div className="text-center text-sm lg:text-xl">
-            <p> SEBI AIF Registration No.: IN / AIF3 / 21-22 / 0968</p>
-            <p> Category of AIF: Category III</p>
-          </div> */}
+
           <p className="text-3xl lg:text-5xl hover:text-6xl cursor-pointer ease-in transition: duration-700 text-center font-joe font-semibold mt-10">
             Our Partners
           </p>
