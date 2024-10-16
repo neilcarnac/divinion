@@ -1,4 +1,4 @@
-import { Button } from "@material-tailwind/react";
+  import { Button } from "@material-tailwind/react";
 import { Input } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
@@ -11,7 +11,7 @@ function Footer() {
           <div className="md:flex md:justify-between">
             <div className="mb-6 md:mb-0">
               <div className="flex flex-col gap-4 ">
-                <img src="logo.svg" alt="" />
+                <img src="logo.svg" className="h-12" alt="" />
                 <div className="text-sm">
                   <p> SEBI AIF Registration No.: IN / AIF3 / 21-22 / 0968</p>
                   <p> Category of AIF: Category III</p>

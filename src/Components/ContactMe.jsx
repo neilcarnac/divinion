@@ -35,6 +35,9 @@ const ContactMe = () => {
                             <a href="tel:+918655577559" className="underline text-white">
                                 +91 86555 77559
                             </a>
+                            <a href="tel:+912235130730" className="underline text-white">
+                                +91 2235130730
+                            </a>
                         </div>
 
                     </div>

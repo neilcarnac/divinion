@@ -66,7 +66,7 @@ const HomBanOne = () => {
           <div className="flex text-white flex-col gap-10 lg:gap-12 sm:gap-4 my-auto lg:pl-56 md:pl-20 pl-10 text-left">
             <div className="flex flex-col font-joe  font-bold tracking-wider lg:text-[2.2rem] md:text-4xl text-2xl">
               <p>Your Partner in Wealth Creation,</p>
-              <p>Our Investor's Interest Above All</p>
+              <p>Our Investors' Interest Above All</p>
             </div>
             <div className="flex flex-col items-start text-left">
               {/* <p>(Click each to read)</p> */}

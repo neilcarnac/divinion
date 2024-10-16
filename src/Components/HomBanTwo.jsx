@@ -167,7 +167,7 @@ const HomBanTwo = () => {
               <p>Growth</p>
             </div>
             <p className="lg:w-[300px] text-center">
-              Unlike funds chasing short/medium term returns, we focus on
+              We focus on
               consistent, long-term growth, offering protection against market
               swings while delivering sustainable returns.
             </p>

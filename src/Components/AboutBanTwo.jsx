@@ -4,7 +4,7 @@ const AboutBanTwo = () => {
   return (
     <>
       <p className="text-3xl lg:text-5xl hover:text-6xl cursor-pointer ease-in transition: duration-700 text-center font-joe font-semibold mt-20">
-        Our Partners
+        Our Values
       </p>
       <div className="flex flex-col items-start gap-2 lg:pl-24 pt-10 sm:pl-8  mb-10 font-semibold">
         <div className="flex flex-col lg:flex-row lg:justify-between gap-10 lg:gap-16">
@@ -21,13 +21,11 @@ const AboutBanTwo = () => {
             <span className="font-thin font-joe italic text-xl ">
               "Art of Being Responsible and Rewarding"
             </span>
-            <p className="w-4/5 text-gray-950 font-thin leading-tight">
+            <p className="w-4/5 text-gray-950 font-joe leading-tight">
               At Divinion, we believe in making a positive impact beyond
               financial markets. Committed to social responsibility, we allocate
               <span className="font-bold"> 25%</span> of our profits towards
-              Corporate Social Responsibility (CSR) activities. This dedicated
-              initiative reflects our ethos of contributing to the well-being of
-              the communities we operate in. Through our CSR endeavors, we aim
+              Corporate Social Responsibility (CSR) activities. Through our CSR endeavors, we aim
               to create lasting value and contribute meaningfully to societal
               progress.
             </p>

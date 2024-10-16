@@ -103,7 +103,7 @@ function Navbar() {
                       : "text-gray-900 hover:text-dark-green"
                   }`}
                 >
-                  Our Approach
+                  Approach
                 </Link>
               </li>
               <li>
