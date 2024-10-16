@@ -100,12 +100,12 @@ const AboutBanThree = () => {
   const renderRows = (rows) => {
     return rows.map((row, rowIndex) => (
       <div
-        className="flex lg:flex-row md:flex-row flex-col items-center  lg:gap-0 md:gap-0 gap-10 p-2 lg:p-16 justify-between"
+        className="flex lg:flex-row md:flex-row flex-col items-center lg:gap-0 md:gap-0 gap-10 p-2 lg:p-16 justify-between"
         key={rowIndex}
       >
         {row.map((person, personIndex) => (
           <div
-            className="flex flex-col p-2 "
+            className="flex flex-col p-2"
             key={personIndex}
             onClick={() => person && handleImageClick(person)}
           >
@@ -113,11 +113,11 @@ const AboutBanThree = () => {
               <>
                 <img
                   src={person.image}
-                  className="rounded-xl shadow-xl w-[330px] h-[315px] cursor-pointer"
+                  className="rounded-xl shadow-xl w-full h-auto max-w-[330px] max-h-[315px] cursor-pointer object-cover"
                   alt={person.name}
                 />
-                <p className="mt-4 font-semibold ">{person.name}</p>
-                <p className="/50 text-sm">{person.position}</p>
+                <p className="mt-4 font-semibold">{person.name}</p>
+                <p className="text-gray-500 text-sm">{person.position}</p>
               </>
             ) : (
               <div className="w-[300px] h-[350px]"></div> // Placeholder for the blank spot
@@ -130,31 +130,30 @@ const AboutBanThree = () => {
 
   const teamRows = [
     teamMembers.slice(0, 3),
-    [...teamMembers.slice(3, 7)], // Add a null for the blank spot
+    [...teamMembers.slice(3, 7)], 
   ];
 
   const boardRows = [boardMembers.slice(0, 4)];
 
   return (
     <>
-      <div className="flex flex-col shadow-md lg:m-10 m-4 rounded-xl lg:p-12 p-2  mt-10">
-        <div className=" mt-16">
-          <p className="text-3xl lg:text-5xl hover:text-6xl cursor-pointer ease-in transition: duration-700 text-center font-joe font-semibold mt-20">
+      <div className="flex flex-col shadow-md lg:m-10 m-4 rounded-xl lg:p-12 p-2 mt-10">
+        <div className="mt-16">
+          <p className="text-3xl lg:text-5xl hover:text-6xl cursor-pointer ease-in-out duration-700 text-center font-joe font-semibold mt-20">
             Our Board Members
           </p>
           {renderRows(boardRows)}
         </div>
       </div>
-      <div className="flex flex-col shadow-md lg:m-10 m-4 rounded-xl lg:p-12 p-2  mt-10">
-        <div className="">
-          <p className="text-3xl lg:text-5xl hover:text-6xl cursor-pointer ease-in transition: duration-700 text-center font-joe font-semibold mt-20">
+      <div className="flex flex-col shadow-md lg:m-10 m-4 rounded-xl lg:p-12 p-2 mt-10">
+        <div>
+          <p className="text-3xl lg:text-5xl hover:text-6xl cursor-pointer ease-in-out duration-700 text-center font-joe font-semibold mt-20">
             Our Team
           </p>
           {renderRows(teamRows)}
         </div>
       </div>
 
-      {/* Modal for displaying person details */}
       {selectedPerson && (
         <Modal isOpen={true} onClose={closeModal} person={selectedPerson} />
       )}
@@ -162,4 +161,4 @@ const AboutBanThree = () => {
   );
 };
 
-export default AboutBanThree;
+export default AboutBanThree

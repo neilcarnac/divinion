@@ -3,7 +3,7 @@ import React from 'react';
 import Navbar from '../Components/Navbar';
 import Footer from '../Components/Footer';
 
-const ServicesForms = () => {
+const DistributorCorner = () => {
     return (
         <div className="flex flex-col min-h-screen"> {/* Ensures the footer stays at the bottom */}
             <Navbar />
@@ -13,12 +13,12 @@ const ServicesForms = () => {
                     <a
                         href="https://drive.google.com/drive/folders/1dzx3-PfOmdXUT69WwiYma-9axpaVymD1?usp=sharing"
                         className="text-blue-500 hover:underline "
-                        target="_blank" // Opens the link in a new tab
-                        rel="noopener noreferrer" // Security best practice
+                        target="_blank" 
+                        rel="noopener noreferrer" 
                     >
                         Click here
                     </a>
-                    {' '}for Service related forms.
+                    {' '}for Distributor Empanelment forms.
                 </p>
             </div>
 
@@ -27,4 +27,4 @@ const ServicesForms = () => {
     );
 };
 
-export default ServicesForms;
+export default DistributorCorner;

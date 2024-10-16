@@ -180,7 +180,7 @@ function Navbar() {
                     </li>
                     <li>
                       <Link
-                        to="/services-form"
+                        to="/distributor-corner"
                         className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
                       >
                         Distributors Corner
