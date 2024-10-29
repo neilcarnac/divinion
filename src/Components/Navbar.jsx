@@ -49,7 +49,7 @@ function Navbar() {
                   href="/"
                   className="flex items-center space-x-3 rtl:space-x-reverse"
                 >
-                  <img src="logo.svg" className="h-12" alt="Logo" />
+                  <img src="logohead.svg" className="h-12" alt="Logo" />
                 </a>
 
                 <button
@@ -213,7 +213,7 @@ function Navbar() {
               href="/"
               className="flex items-center space-x-3 rtl:space-x-reverse"
             >
-              <img src="logo.svg" className="h-10" alt="Logo" />
+              <img src="logohead.svg" className="h-10" alt="Logo" />
             </a>
             <svg
               xmlns="http://www.w3.org/2000/svg"

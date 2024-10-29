@@ -21,13 +21,13 @@ const AboutBanTwo = () => {
             <span className="font-thin font-joe italic text-xl ">
               "Art of Being Responsible and Rewarding"
             </span>
-            <p className="w-4/5 text-gray-950 font-joe leading-tight">
+            <p className="w-4/5 text-gray-950 font-normal leading-tight">
               At Divinion, we believe in making a positive impact beyond
               financial markets. Committed to social responsibility, we allocate
               <span className="font-bold"> 25%</span> of our profits towards
-              Corporate Social Responsibility (CSR) activities. Through our CSR endeavors, we aim
-              to create lasting value and contribute meaningfully to societal
-              progress.
+              Corporate Social Responsibility (CSR) activities. Through our CSR
+              endeavors, we aim to create lasting value and contribute
+              meaningfully to societal progress.
             </p>
             {/* <p className='font-normal underline'>Explore Services {"-->"}</p> */}
           </div>

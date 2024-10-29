@@ -153,14 +153,13 @@ const AboutBanOne = () => {
           <p className="text-3xl lg:text-5xl hover:text-6xl cursor-pointer ease-in transition: duration-700 text-center font-joe font-semibold mt-20 lg:mt-32">
             Growth Drivers & Anchors
           </p>
-          <div className="mx-auto flex  flex-col p-4 lg:p-10">
+          <div className="mx-auto flex  flex-col p-4 lg:p-20">
             <img
-              src="ice.svg"
+              src="icy.svg"
               className="hover:cursor-pointer p-5 hover:p-0 transition: duration-500"
               alt=""
             />
           </div>
-
         </div>
       </div>
     </>

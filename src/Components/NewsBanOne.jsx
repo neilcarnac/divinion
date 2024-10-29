@@ -7,9 +7,9 @@ const NewsBanOne = () => {
         <p className="hover:text-5xl transition: duration-500 hover:cursor-pointer text-3xl text-center mt-10">
           News{" "}
         </p>
-        <p className="border-2 text-xl text-center mt-6 p-2 px-4 w-fit mx-auto shadow-md">
-  Coming Soon
-</p>
+        <p className="rounded-xl text-xl text-center mt-6 p-2 px-4 w-fit mx-auto shadow-md">
+          Coming Soon
+        </p>
       </div>
       {/* <div className="relative bg-cover z-20 flex flex-col pb-4 sm:pb-10 md:p-8 w-full h-[85vh] my-auto mt-1">
                 <img
