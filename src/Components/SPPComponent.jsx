@@ -22,7 +22,7 @@ const SPPComponent = () => {
         {" "}
         {/* Added padding and centered text */}
         <a
-          href="https://drive.google.com/drive/folders/1u9_s8i2xLv-P2Knq2vAkHx-syHdxd670"
+          href="https://drive.google.com/drive/folders/1u9_s8i2xLv-P2Knq2vAkHx-syHdxd670?usp=sharing"
           className="text-blue-500 hover:underline "
           target="_blank"
           rel="noopener noreferrer"

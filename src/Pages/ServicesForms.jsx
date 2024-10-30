@@ -14,7 +14,7 @@ const ServicesForms = () => {
           {" "}
           {/* Added padding and centered text */}
           <a
-            href="https://drive.google.com/drive/folders/1u9_s8i2xLv-P2Knq2vAkHx-syHdxd670"
+            href="https://drive.google.com/drive/folders/1dzx3-PfOmdXUT69WwiYma-9axpaVymD1?usp=sharing"
             className="text-blue-500 hover:underline "
             target="_blank" // Opens the link in a new tab
             rel="noopener noreferrer" // Security best practice
