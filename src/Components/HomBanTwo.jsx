@@ -167,9 +167,8 @@ const HomBanTwo = () => {
               <p>Growth</p>
             </div>
             <p className="lg:w-[300px] text-center">
-              We focus on
-              consistent, long-term growth, offering protection against market
-              swings while delivering sustainable returns.
+              We focus on consistent, long-term growth, offering protection
+              against market swings while delivering sustainable returns.
             </p>
           </div>
           <div className="flex flex-col mt-5 gap-5  items-center">
@@ -178,7 +177,7 @@ const HomBanTwo = () => {
               <p>Building</p>
               <p>Investor Confidence</p>
             </div>
-            <p className="lg:w-[300px] text-center">
+            <p className="lg:w-[340px] text-center">
               By emphasizing capital protection first, we empower investors to
               weather market turbulence, ensuring peace of mind while navigating
               uncertainty and focusing on steady growth.
