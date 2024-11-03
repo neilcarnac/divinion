@@ -1,4 +1,4 @@
-  import { Button } from "@material-tailwind/react";
+import { Button } from "@material-tailwind/react";
 import { Input } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
@@ -73,14 +73,14 @@ function Footer() {
                       Privacy Policy
                     </a>
                   </li>
-                  <li>
+                  {/* <li>
                     <a
                       href="/services-privacy-policy"
                       className="hover:underline"
                     >
                       Terms &amp; Conditions
                     </a>
-                  </li>
+                  </li> */}
                 </ul>
               </div>
             </div>
