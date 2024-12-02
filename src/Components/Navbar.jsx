@@ -194,6 +194,15 @@ function Navbar() {
                         Policies
                       </Link>
                     </li>
+                    <li>
+                      <Link
+                        to="/disclosures"
+                        className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                      >
+                        Disclosures
+                      </Link>
+                    </li>
+
                   </ul>
                 )}
               </li>
