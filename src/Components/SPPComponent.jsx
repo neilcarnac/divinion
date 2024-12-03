@@ -18,6 +18,7 @@ const policies = [
 const SPPComponent = () => {
   return (
     <div className="flex flex-col w-full mx-auto">
+       <div className="font-joe">
       <p className="text-center p-4">
         {" "}
         {/* Added padding and centered text */}
@@ -29,8 +30,9 @@ const SPPComponent = () => {
         >
           Click here
         </a>{" "}
-        For Our Policies
+        for our Policies
       </p>
+      </div>
       <div className="flex flex-col gap-5">
         {policies.map((policy, index) => (
           <div
