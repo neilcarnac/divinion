@@ -11,7 +11,7 @@ import Unavailable from "../Components/Unavailable";
 const HomePage = () => {
   return (
     <>
-      <Navbar />
+      {/* <Navbar />
 
       <HomBanOne />
       <HomBanTwo />
@@ -19,9 +19,9 @@ const HomePage = () => {
       <Footer />
 
       <BannerOne />
-      <BannerTwo />
+      <BannerTwo /> */}
       {/* <Dashboard /> */}
-      {/* <Unavailable /> */}
+      <Unavailable />
     </>
   );
 };

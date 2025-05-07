@@ -23,7 +23,7 @@ const AppRouter = () => {
     <UserProvider>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/about/" element={<About />} />
+        {/* <Route path="/about/" element={<About />} />
         <Route path="/team/" element={<Team />} />
 
         <Route path="/admin/" element={<Admin />} />
@@ -41,7 +41,7 @@ const AppRouter = () => {
         <Route path="/careers/" element={<Careers />} />
         <Route path="/contact/" element={<Contact />} />
 
-        <Route path="/adminlogin" element={<AdminLogin />} />
+        <Route path="/adminlogin" element={<AdminLogin />} /> */}
       </Routes>
     </UserProvider>
   );
