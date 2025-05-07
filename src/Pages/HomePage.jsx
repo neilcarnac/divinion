@@ -11,17 +11,17 @@ import Unavailable from "../Components/Unavailable";
 const HomePage = () => {
   return (
     <>
-      {/* <Navbar />
+      <Navbar />
 
       <HomBanOne />
-      <HomBanTwo /> */}
-      {/* <HomeBanThree /> */}
-      {/* <Footer /> */}
+      <HomBanTwo />
+      <HomeBanThree />
+      <Footer />
 
-      {/* <BannerOne />
-      <BannerTwo /> */}
+      <BannerOne />
+      <BannerTwo />
       {/* <Dashboard /> */}
-      <Unavailable />
+      {/* <Unavailable /> */}
     </>
   );
 };
